@@ -1,0 +1,5 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Users/Dima/Desktop/game/rpgame2/Content/Battleground3.png","C:/Users/Dima/Desktop/game/rpgame2/Content/bin/DesktopGL/Content/Battleground3.xnb","TextureProcessor","Texture2DContent",1223903,3686485,0.1780538
+"C:/Users/Dima/Desktop/game/rpgame2/Content/firstLevelBackground.png","C:/Users/Dima/Desktop/game/rpgame2/Content/bin/DesktopGL/Content/firstLevelBackground.xnb","TextureProcessor","Texture2DContent",533577,3686485,0.1844824
+"C:/Users/Dima/Desktop/game/rpgame2/Content/mainFont.spritefont","C:/Users/Dima/Desktop/game/rpgame2/Content/bin/DesktopGL/Content/mainFont.xnb","FontDescriptionProcessor","SpriteFontContent",2200,4202399,0.3755174
+"C:/Users/Dima/Desktop/game/rpgame2/Content/mainPerson.png","C:/Users/Dima/Desktop/game/rpgame2/Content/bin/DesktopGL/Content/mainPerson.xnb","TextureProcessor","Texture2DContent",3742,16469,0.0937459
