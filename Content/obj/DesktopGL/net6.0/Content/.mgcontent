@@ -4,12 +4,22 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/Attack_1.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/Attack_2.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/Attack_3.png</File>
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/Battleground3.png</File>
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/firstLevelBackground.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/Idle.png</File>
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/mainFont.spritefont</File>
-    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/mainPerson.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/Run.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/RunLeft.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

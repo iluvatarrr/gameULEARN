@@ -1,0 +1,10 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Users/Dima/Desktop/game/rpgame2/Content/Battleground3.png","C:/Users/Dima/Desktop/game/rpgame2/Content/bin/DesktopGL/Battleground3.xnb","TextureProcessor","Texture2DContent",1223903,3686485,0.1802572
+"C:/Users/Dima/Desktop/game/rpgame2/Content/firstLevelBackground.png","C:/Users/Dima/Desktop/game/rpgame2/Content/bin/DesktopGL/firstLevelBackground.xnb","TextureProcessor","Texture2DContent",533577,3686485,0.0858132
+"C:/Users/Dima/Desktop/game/rpgame2/Content/mainFont.spritefont","C:/Users/Dima/Desktop/game/rpgame2/Content/bin/DesktopGL/mainFont.xnb","FontDescriptionProcessor","SpriteFontContent",2200,4202399,0.2788986
+"C:/Users/Dima/Desktop/game/rpgame2/Content/mainPerson.png","C:/Users/Dima/Desktop/game/rpgame2/Content/bin/DesktopGL/mainPerson.xnb","TextureProcessor","Texture2DContent",3742,16469,0.0017371
+"C:/Users/Dima/Desktop/game/rpgame2/Content/Player/WalkingDown.png","C:/Users/Dima/Desktop/game/rpgame2/Content/bin/DesktopGL/Player/WalkingDown.xnb","TextureProcessor","Texture2DContent",866,7525,0.0024567
+"C:/Users/Dima/Desktop/game/rpgame2/Content/Player/WalkingLeft.png","C:/Users/Dima/Desktop/game/rpgame2/Content/bin/DesktopGL/Player/WalkingLeft.xnb","TextureProcessor","Texture2DContent",706,7285,0.0017129
+"C:/Users/Dima/Desktop/game/rpgame2/Content/Player/WalkingRight.png","C:/Users/Dima/Desktop/game/rpgame2/Content/bin/DesktopGL/Player/WalkingRight.xnb","TextureProcessor","Texture2DContent",703,7285,0.0017322
+"C:/Users/Dima/Desktop/game/rpgame2/Content/Player/WalkingUp.png","C:/Users/Dima/Desktop/game/rpgame2/Content/bin/DesktopGL/Player/WalkingUp.xnb","TextureProcessor","Texture2DContent",702,7525,0.0017034
+"C:/Users/Dima/Desktop/game/rpgame2/Content/Run.png","C:/Users/Dima/Desktop/game/rpgame2/Content/bin/DesktopGL/Run.xnb","TextureProcessor","Texture2DContent",21349,221269,0.0070588

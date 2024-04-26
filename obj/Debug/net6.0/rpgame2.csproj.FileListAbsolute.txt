@@ -23,7 +23,12 @@ C:\Users\Dima\Desktop\game\rpgame2\obj\Debug\net6.0\refint\rpgame2.dll
 C:\Users\Dima\Desktop\game\rpgame2\obj\Debug\net6.0\rpgame2.pdb
 C:\Users\Dima\Desktop\game\rpgame2\obj\Debug\net6.0\rpgame2.genruntimeconfig.cache
 C:\Users\Dima\Desktop\game\rpgame2\obj\Debug\net6.0\ref\rpgame2.dll
-C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\mainPerson.xnb
 C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\Battleground3.xnb
 C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\mainFont.xnb
 C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\firstLevelBackground.xnb
+C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\Run.xnb
+C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\Idle.xnb
+C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\Attack_1.xnb
+C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\RunLeft.xnb
+C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\Attack_2.xnb
+C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\Attack_3.xnb

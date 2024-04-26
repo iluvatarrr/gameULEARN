@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Profile>Reach</Profile>
+  <Platform>DesktopGL</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/Battleground3.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/firstLevelBackground.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/mainFont.spritefont</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/mainPerson.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/Player/WalkingDown.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/Player/WalkingLeft.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/Player/WalkingRight.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/Player/WalkingUp.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/Run.png</File>
+  </SourceFiles>
+  <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>
