@@ -9,6 +9,7 @@ namespace rpgame2.Controller
 {
     public class Input
     {
+        public Keys CurrentKey { get; set; }
         public Keys Down { get; set; }
         public Keys Left { get; set; }
         public Keys Right { get; set; }
@@ -16,6 +17,7 @@ namespace rpgame2.Controller
         public Keys Fight { get; set; }
         public Keys Fight2 { get; set; }
         public Keys Fight3 { get; set; }
+        public Keys Jump { get; set; }
         public Keys None { get; set; }
     }
 }

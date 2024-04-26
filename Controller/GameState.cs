@@ -30,7 +30,7 @@ namespace rpgame2
             switch (State)
             {
                 case State.SplashScreen:
-                    if (Keyboard.GetState().IsKeyDown(Keys.Space)) State = State.Game;
+                    if (Keyboard.GetState().IsKeyDown(Keys.D1)) State = State.Game;
                     break;
                 case State.Game:
                     if (Keyboard.GetState().IsKeyDown(Keys.Escape)) State = State.SplashScreen;
