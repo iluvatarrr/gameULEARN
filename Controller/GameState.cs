@@ -19,7 +19,7 @@ namespace rpgame2
 
     public class GameState
     {
-        public State State { get; set; }
+        public State State { get; private set; }
         public GameState(State state) 
         {
             State = state;

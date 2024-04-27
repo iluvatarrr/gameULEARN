@@ -32,3 +32,5 @@ C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\Attack_1.xnb
 C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\RunLeft.xnb
 C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\Attack_2.xnb
 C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\Attack_3.xnb
+C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\smallPlatform.xnb
+C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\ground.xnb

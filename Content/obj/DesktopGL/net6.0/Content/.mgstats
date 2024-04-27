@@ -4,7 +4,9 @@ Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Siz
 "C:/Users/Dima/Desktop/game/rpgame2/Content/Attack_3.png","C:/Users/Dima/Desktop/game/rpgame2/Content/bin/DesktopGL/Content/Attack_3.xnb","TextureProcessor","Texture2DContent",19722,147541,0.0937356
 "C:/Users/Dima/Desktop/game/rpgame2/Content/Battleground3.png","C:/Users/Dima/Desktop/game/rpgame2/Content/bin/DesktopGL/Content/Battleground3.xnb","TextureProcessor","Texture2DContent",1223903,3686485,0.1780538
 "C:/Users/Dima/Desktop/game/rpgame2/Content/firstLevelBackground.png","C:/Users/Dima/Desktop/game/rpgame2/Content/bin/DesktopGL/Content/firstLevelBackground.xnb","TextureProcessor","Texture2DContent",494232,3686485,0.1791355
+"C:/Users/Dima/Desktop/game/rpgame2/Content/ground.png","C:/Users/Dima/Desktop/game/rpgame2/Content/bin/DesktopGL/Content/ground.xnb","TextureProcessor","Texture2DContent",38382,350085,0.0997793
 "C:/Users/Dima/Desktop/game/rpgame2/Content/Idle.png","C:/Users/Dima/Desktop/game/rpgame2/Content/bin/DesktopGL/Content/Idle.xnb","TextureProcessor","Texture2DContent",20491,221269,0.0955894
 "C:/Users/Dima/Desktop/game/rpgame2/Content/mainFont.spritefont","C:/Users/Dima/Desktop/game/rpgame2/Content/bin/DesktopGL/Content/mainFont.xnb","FontDescriptionProcessor","SpriteFontContent",2200,4202399,0.3755174
 "C:/Users/Dima/Desktop/game/rpgame2/Content/Run.png","C:/Users/Dima/Desktop/game/rpgame2/Content/bin/DesktopGL/Content/Run.xnb","TextureProcessor","Texture2DContent",21349,221269,0.0955693
 "C:/Users/Dima/Desktop/game/rpgame2/Content/RunLeft.png","C:/Users/Dima/Desktop/game/rpgame2/Content/bin/DesktopGL/Content/RunLeft.xnb","TextureProcessor","Texture2DContent",7973,221269,0.0961527
+"C:/Users/Dima/Desktop/game/rpgame2/Content/smallPlatform.png","C:/Users/Dima/Desktop/game/rpgame2/Content/bin/DesktopGL/Content/smallPlatform.xnb","TextureProcessor","Texture2DContent",25198,61897,0.0920725

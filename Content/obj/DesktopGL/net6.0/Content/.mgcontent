@@ -9,12 +9,16 @@
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/Attack_3.png</File>
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/Battleground3.png</File>
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/firstLevelBackground.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/ground.png</File>
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/Idle.png</File>
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/mainFont.spritefont</File>
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/Run.png</File>
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/RunLeft.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/smallPlatform.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

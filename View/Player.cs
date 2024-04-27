@@ -14,10 +14,8 @@ namespace rpgame2.View
     public class Player
     {
         private GameState GameState;
-
         protected Texture2D texture;
-        private PlayerModel PlayerModel = new PlayerModel();
-
+        public PlayerModel PlayerModel = new PlayerModel();
         public virtual void Draw(SpriteBatch spriteBatch)
         {
             if (GameState.State.Equals(State.Game))
@@ -34,11 +32,6 @@ namespace rpgame2.View
         {
             PlayerModel.animations = currentAnimations;
             PlayerModel.controller = new AnimationController(PlayerModel.animations.First().Value);
-        }
-            
-        public Player(Texture2D currentTexture) 
-        {
-            texture = currentTexture;
         }
 
         public virtual void Update(GameTime gameTime, GameState gameState) 
