@@ -32,5 +32,13 @@ C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\Attack_1.xnb
 C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\RunLeft.xnb
 C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\Attack_2.xnb
 C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\Attack_3.xnb
-C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\smallPlatform.xnb
-C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\ground.xnb
+C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\Dead.xnb
+C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\lava_tile1.xnb
+C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\HeallthSubBur.xnb
+C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\grassGrondLeft.xnb
+C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\grassGrondRight.xnb
+C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\LevelTexture\grassGrondMIddle.xnb
+C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\LevelTexture\grassGrondLeft.xnb
+C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\LevelTexture\grassGrondRight.xnb
+C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\LevelTexture\dirth.xnb
+C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\LevelTexture\grass.xnb

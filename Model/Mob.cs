@@ -7,6 +7,7 @@ namespace rpgame2
 {
     public class Mob
     {
-
+        public Vector2 Position;
+        public int Health;
     }
 }

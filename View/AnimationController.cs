@@ -25,7 +25,7 @@ namespace rpgame2.View
         public void Play(Animation currentAnumation)
         {
             if (animation == currentAnumation) return;
-            animation = currentAnumation;
+                animation = currentAnumation;
             animation.CurrentFrame = 0;
             timer = 0;
         }
@@ -38,13 +38,22 @@ namespace rpgame2.View
 
         public void Update(GameTime gameTime)
         {
+            if (!animation.IsLooping && animation.IsFinished)
+            {
+                return;
+            }
+
             timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (timer > animation.FrameSpeed)
             {
                 timer = 0f;
                 animation.CurrentFrame++;
+                if (animation.CurrentFrame  == (animation.FrameCount- 1))
+                    animation.IsFinished = true;
                 if (animation.CurrentFrame >= animation.FrameCount)
+                {
                     animation.CurrentFrame = 0;
+                }
             }
         }
     }

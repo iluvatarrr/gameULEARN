@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/Dima/Desktop/game/rpgame2/Content/ground.png</SourceFile>
-  <SourceTime>2024-04-27T12:55:14.66466+05:00</SourceTime>
-  <DestFile>C:/Users/Dima/Desktop/game/rpgame2/Content/bin/DesktopGL/Content/ground.xnb</DestFile>
-  <DestTime>2024-04-27T18:59:49.0153372+05:00</DestTime>
+  <SourceFile>C:/Users/Dima/Desktop/game/rpgame2/Content/lava_tile1.png</SourceFile>
+  <SourceTime>2019-09-25T12:17:34.0016726+05:00</SourceTime>
+  <DestFile>C:/Users/Dima/Desktop/game/rpgame2/Content/bin/DesktopGL/Content/lava_tile1.xnb</DestFile>
+  <DestTime>2024-04-28T13:39:46.106631+05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T16:44:56+05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
