@@ -11,7 +11,7 @@ namespace rpgame2.Model
     {
         public readonly static int marginBlockLeftRight = 40;
         public readonly static int marginPlayerTop = 90;
-        private static int marginFromTop = 1;
+        private static int marginFromTop = 3;
 
         public static bool OnPlatform(this Rectangle r1, Rectangle r2)
         {
@@ -95,9 +95,9 @@ namespace rpgame2.Model
             if (MapInform.Blocks.Any(platform => PlayerModel.Rectangle.OnPlatform(platform)))
             {
                 PlayerModel.Velocity.Y = 0f;
-                PlayerModel.hasJump = false;
+                PlayerModel.onGravity = false;
             }
-            else PlayerModel.hasJump = true;
+            else PlayerModel.onGravity = true;
             if (InNotMap()) PlayerModel.IsDead = true;
         }
     }

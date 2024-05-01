@@ -16,11 +16,14 @@ namespace rpgame2.Model
         private MouseState pastState;
 
         public float Speed = 3f;
-        public bool hasJump = true;
+        public float Jump = 90f;
+        public float Gravity = 3f;
+        public bool onGravity = true;
         public int Health = 100;
         public int Gems;
         public int Strange = 10;
         public bool isHit = false;
+        public Vector2 PositionBeforeJump = new Vector2(float.PositiveInfinity, float.PositiveInfinity);
 
         KeyboardState oldKeyboardState;
         KeyboardState keyboardState;
@@ -82,17 +85,23 @@ namespace rpgame2.Model
 
         private void JumpLogic()
         {
-            if (keyboardState.IsKeyDown(Input.Jump) && hasJump == false)
+                
+            if (keyboardState.IsKeyDown(Input.Jump) && onGravity == false)
             {
-                if (controller.timer < 0.00000001f)
+                if (controller.timer < 0.000001f)
                 {
-                    Position.Y -= 90f;
+                    Position.Y -= Jump;
                     Velocity.Y = -45f;
-                    hasJump = true;
+                    onGravity = true;
                 }
+                
             }
-            Velocity.Y += 3f;
-            if (hasJump == false) Velocity.Y = 0f;
+            Velocity.Y += Gravity;
+            if (onGravity == false)
+            {
+                PositionBeforeJump = Position;
+                Velocity.Y = 0f;
+            }
         }
 
         protected virtual void SetAnimation()
@@ -115,6 +124,7 @@ namespace rpgame2.Model
         public virtual void Update(GameTime gameTime)
         {
             keyboardState = Keyboard.GetState();
+
             oldKeyboardState = keyboardState;
             controller.Update(gameTime);
             UpdatePositionController();
@@ -125,6 +135,7 @@ namespace rpgame2.Model
             Velocity = Vector2.Zero;
             if (IsDead) DeadInput();
             Rectangle = new Rectangle((int)Position.X, (int)Position.Y, controller.animation.FrameWidth, controller.animation.FrameHeight);
+            if ((Position.Y - PositionBeforeJump.Y) > (LevelModel.sizeOfElement * 2)) IsDead = true;
         }
     }
 }

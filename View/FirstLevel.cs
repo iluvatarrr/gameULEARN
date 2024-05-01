@@ -12,15 +12,15 @@ namespace rpgame2
         private GameState GameState;
         public LevelModel LevelModel { get; private set; }
         public Texture2D BackgroundImage { get; private set; }
-        public Texture2D GrassTexture;
-        public Texture2D DirthTexture;
-        public Texture2D GrassGrondLeft;
-        public Texture2D GrassGrondMiddle;
-        public Texture2D GrassGrondRight;
-        public Texture2D Crystal;
-        public ScoresCounter ScoresConteter;
-        public Texture2D FinalStone;
-        public Texture2D FinalStoneOn;
+        public Texture2D GrassTexture { get; private set; }
+        public Texture2D DirthTexture { get; private set; }
+        public Texture2D GrassGrondLeft { get; private set; }
+        public Texture2D GrassGrondMiddle { get; private set; }
+        public Texture2D GrassGrondRight { get; private set; }
+        public Texture2D Crystal { get; private set; }
+        public ScoresCounter ScoresConteter { get; private set; }
+        public Texture2D FinalStone { get; private set; }
+        public Texture2D FinalStoneOn { get; private set; }
 
         public Firstevel(Texture2D backgroundImage, LevelModel levelModel,
             Texture2D grassTextre, Texture2D dirthTextre, Texture2D grassGrondLeft,

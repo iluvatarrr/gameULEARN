@@ -38,6 +38,7 @@ namespace rpgame2.View
             PlayerModel.animations = currentAnimations;
             PlayerModel.controller = new AnimationController(PlayerModel.animations.First().Value);
             TextureHealth = textureHealth;
+            PlayerModel.Position = new Vector2(0, 380);
             HealthBarTexture = healthBarTexture;
         }
 

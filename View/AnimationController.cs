@@ -25,7 +25,7 @@ namespace rpgame2.View
         public void Play(Animation currentAnumation)
         {
             if (animation == currentAnumation) return;
-                animation = currentAnumation;
+            animation = currentAnumation;
             animation.CurrentFrame = 0;
             timer = 0;
         }
