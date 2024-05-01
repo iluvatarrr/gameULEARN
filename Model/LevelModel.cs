@@ -1,43 +1,44 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using rpgame2.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace rpgame2.Model
 {
+    static class RectangleHelper
+    {
+        public readonly static int marginBlockLeftRight = 40;
+        public readonly static int marginPlayerTop = 90;
+        private static int marginFromTop = 1;
+
+        public static bool OnPlatform(this Rectangle r1, Rectangle r2)
+        {
+            return ((r1.Bottom >= (r2.Top - marginFromTop)) &&
+                (r1.Bottom <= r2.Top) &&
+                (r1.Right >= (r2.Left + marginBlockLeftRight)) &&
+                (r1.Left <= (r2.Right - marginBlockLeftRight)));
+        }
+    }
+
     public class LevelModel
     {
-        private PlayerModel PlayerModel;
+        public PlayerModel PlayerModel { get; private set; }
+        public static MapInfo MapInform;
         private Mob enemy;
-        public static readonly int sizeOfElement = 48;
-        public static int[,] mapMatrix =
-        {
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 2, 3, 3, 3, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 3, 3, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 3, 3, 3, 4, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 2, 3, 3, 3, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 3, 3, 3, 4, 0, 0, 0, 0, 0, 0, 9, 9, 9, 9, 9, 9},
-            {1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 9, 9, 9, 9, 9},
-            {9, 9, 9, 0, 0, 0, 2, 3, 3, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 9, 9, 9, 9, 9},
-            {9, 9, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 9, 9, 9, 9, 9},
-            {9, 9, 9, 0, 2, 3, 3, 3, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 9, 9, 9, 9, 9},
-            {9, 9, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 9, 9, 9, 9, 9},
-        };
+        public static int sizeOfElement { get; private set; }
+        public static Point PositionOfPortal { get; private set; }
 
         public LevelModel(Player player)
         {
             PlayerModel = player.PlayerModel;
+            MapInform = new MapInfo();
+            MapInform.Blocks = new List<Rectangle>();
+            MapInform.Crystal = new List<Rectangle>();
+            PositionOfPortal = new Point();
+            sizeOfElement = 48;
+            GetBlockRectangle();
         }
 
         public void SetDamage()
@@ -46,42 +47,58 @@ namespace rpgame2.Model
                 enemy.Health -= PlayerModel.Strange;
         }
 
-        private bool InMap()
+        private bool InNotMap()
         {
-            return (PlayerModel.Position.X < -50
+            return (PlayerModel.Position.X < -RectangleHelper.marginBlockLeftRight 
+                    || PlayerModel.Position.Y < -RectangleHelper.marginPlayerTop
                     || Game1.Game1.ScreenWidth < PlayerModel.Position.X
                     || Game1.Game1.ScreenHeight < PlayerModel.Position.Y);
         }
-        public static List<Rectangle> GetBlockRectangle()
+        public static void GetBlockRectangle()
         {
-            List<Rectangle> result = new List<Rectangle>();
-            for (int y = 0; y < mapMatrix.GetLength(0); y++)
-                for (int x = 0; x < mapMatrix.GetLength(1); x++)
-                    if (mapMatrix[y,x] != 9 && mapMatrix[y, x] != 0)
-                        result.Add(new Rectangle(x*sizeOfElement, y*sizeOfElement, sizeOfElement, sizeOfElement));
-            return result;
+            for (int y = 0; y < MapInform.mapMatrixFirstLevel.GetLength(0); y++)
+                for (int x = 0; x < MapInform.mapMatrixFirstLevel.GetLength(1); x++)
+                    if (MapInform.mapMatrixFirstLevel[y, x] != 9 && MapInform.mapMatrixFirstLevel[y, x] != 0)
+                    {
+                        if (MapInform.mapMatrixFirstLevel[y, x] == 5) MapInform.Crystal.Add(new Rectangle(x * sizeOfElement, y * sizeOfElement, sizeOfElement, sizeOfElement));
+                        else
+                        {
+                            if (MapInform.mapMatrixFirstLevel[y, x] == 6) PositionOfPortal = new Point(y, x);
+                            MapInform.Blocks.Add(new Rectangle(x * sizeOfElement, y * sizeOfElement, sizeOfElement, sizeOfElement));
+                        }
+                    }
         }
-        
+
+        public void CheckCurrentGems()
+        {
+            foreach (var gem in MapInform.Crystal.ToArray())
+                if (PlayerModel.Rectangle.Intersects(gem))
+                {
+                    MapInform.mapMatrixFirstLevel[gem.Y / 48, gem.X / 48] = 0;
+                    MapInform.Crystal.Remove(gem);
+                    PlayerModel.AddGem();
+                }
+        }
+
+        public void IsCompleteLevel()
+        {
+            if (MapInform.Crystal.Count == 0) MapInform.mapMatrixFirstLevel[PositionOfPortal.X, PositionOfPortal.Y] = 7;
+        }
+
         public void Update()
         {
-            if (InMap()) PlayerModel.IsDead = true;
-            if (GetBlockRectangle().Any(platform => PlayerModel.rectangle.isOnTopOf(platform)))
+            if (!PlayerModel.IsDead)
+            {
+                CheckCurrentGems();
+                IsCompleteLevel();
+            }
+            if (MapInform.Blocks.Any(platform => PlayerModel.Rectangle.OnPlatform(platform)))
             {
                 PlayerModel.Velocity.Y = 0f;
                 PlayerModel.hasJump = false;
             }
             else PlayerModel.hasJump = true;
+            if (InNotMap()) PlayerModel.IsDead = true;
         }
-    }
-}
-
-static class RectangleHelper
-{
-    public static bool isOnTopOf(this Rectangle r1, Rectangle r2)
-    {
-        return ((r1.Bottom >= (r2.Top - 3)) &&
-            (r1.Bottom <= r2.Top) &&
-            (r1.Right >= (r2.Left + 40)) &&
-            (r1.Left <= (r2.Right - 40)));
     }
 }

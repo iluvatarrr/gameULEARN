@@ -10,25 +10,20 @@ using System.Linq;
 
 namespace rpgame2.Model
 {
-    public class PlayerModel
+    public class PlayerModel : Mob
     {
-        public Rectangle rectangle;
 
         private MouseState pastState;
-        public Vector2 Position;
-
-        public AnimationController controller;
-        public Dictionary<string, Animation> animations;
 
         public float Speed = 3f;
-        public Vector2 Velocity;
         public bool hasJump = true;
         public int Health = 100;
-        public bool IsDead;
+        public int Gems;
         public int Strange = 10;
         public bool isHit = false;
-        KeyboardState keyboardState = Keyboard.GetState();
 
+        KeyboardState oldKeyboardState;
+        KeyboardState keyboardState;
 
         private Input Input = new Input()
         {
@@ -53,10 +48,15 @@ namespace rpgame2.Model
             if (controller != null) controller.Position = Position;
         }
 
+        public void AddGem() => Gems++;
+
         public void HitLogic()
         {
-            if (keyboardState.IsKeyDown(Input.Fight) || keyboardState.IsKeyDown(Input.Fight2) || keyboardState.IsKeyDown(Input.Fight3))
+            if (keyboardState.IsKeyUp(Input.Fight) && oldKeyboardState.IsKeyDown(Input.Fight)
+                || keyboardState.IsKeyDown(Input.Fight2) && oldKeyboardState.IsKeyDown(Input.Fight2)
+                || keyboardState.IsKeyDown(Input.Fight3) && oldKeyboardState.IsKeyDown(Input.Fight3))
                 isHit = true;
+            else isHit = false;
         }
 
         public void ChangeHealth()
@@ -64,8 +64,8 @@ namespace rpgame2.Model
             MouseState MouseState = Mouse.GetState();
             Rectangle MouseRect = new Rectangle(pastState.X, pastState.Y, 1, 1);
 
-            if (MouseRect.Intersects(rectangle) && (MouseState.LeftButton == ButtonState.Pressed && pastState.LeftButton == ButtonState.Pressed))
-                Health -= 1;
+            if (MouseRect.Intersects(Rectangle) && (MouseState.LeftButton == ButtonState.Pressed && pastState.LeftButton == ButtonState.Pressed))
+                if (controller.timer < 0.000001f) Health -= 10;
             if (Health < 1) IsDead = true;
             if (IsDead) Health = 0;
             pastState = MouseState;
@@ -84,9 +84,12 @@ namespace rpgame2.Model
         {
             if (keyboardState.IsKeyDown(Input.Jump) && hasJump == false)
             {
-                Position.Y -= 90f;
-                Velocity.Y = -45f;
-                hasJump = true;
+                if (controller.timer < 0.00000001f)
+                {
+                    Position.Y -= 90f;
+                    Velocity.Y = -45f;
+                    hasJump = true;
+                }
             }
             Velocity.Y += 3f;
             if (hasJump == false) Velocity.Y = 0f;
@@ -112,6 +115,7 @@ namespace rpgame2.Model
         public virtual void Update(GameTime gameTime)
         {
             keyboardState = Keyboard.GetState();
+            oldKeyboardState = keyboardState;
             controller.Update(gameTime);
             UpdatePositionController();
             Move();
@@ -120,7 +124,7 @@ namespace rpgame2.Model
             Position += Velocity;
             Velocity = Vector2.Zero;
             if (IsDead) DeadInput();
-            rectangle = new Rectangle((int)Position.X, (int)Position.Y, controller.animation.FrameWidth, controller.animation.FrameHeight);
+            Rectangle = new Rectangle((int)Position.X, (int)Position.Y, controller.animation.FrameWidth, controller.animation.FrameHeight);
         }
     }
 }

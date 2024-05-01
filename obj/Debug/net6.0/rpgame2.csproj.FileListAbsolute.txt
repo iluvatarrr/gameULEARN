@@ -42,3 +42,7 @@ C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\LevelTexture\grassGr
 C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\LevelTexture\grassGrondRight.xnb
 C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\LevelTexture\dirth.xnb
 C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\LevelTexture\grass.xnb
+C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\LevelTexture\purpleCrystal.xnb
+C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\ScoresCounterFont\ScoresConterFont.xnb
+C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\LevelTexture\finalStone.xnb
+C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\LevelTexture\finalStoneOn.xnb

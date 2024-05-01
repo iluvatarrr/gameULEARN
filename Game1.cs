@@ -18,12 +18,12 @@ namespace Game1
 
         public static int ScreenWidth = 1280;
         public static int ScreenHeight = 720;
-        private Player player;
-        private LevelModel levelModel;
+        private Player Player;
+        private LevelModel LevelModel;
         private GameState gameState;
-        private Menu mainBackground;
-        private Firstevel firstevel;
-
+        private Menu MainBackground;
+        private Firstevel Firstevel;
+        private ScoresCounter ScoresConteter;
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -43,7 +43,7 @@ namespace Game1
         {
 
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            mainBackground = new Menu(Content.Load<Texture2D>("Battleground3"), Content.Load<SpriteFont>("mainFont"));
+            MainBackground = new Menu(Content.Load<Texture2D>("Battleground3"), Content.Load<SpriteFont>("mainFont"));
             var animationDictionary = new Dictionary<string, Animation>()
             {
                 { "WalkUp", new Animation(Content.Load<Texture2D>("Run"), 6) },
@@ -56,18 +56,21 @@ namespace Game1
                 { "Fight3", new Animation(Content.Load<Texture2D>("Attack_3"), 4) },
                 { "death", new Animation(Content.Load<Texture2D>("Dead"), 4) },
             };
-
+            var crystal = Content.Load<Texture2D>("LevelTexture\\purpleCrystal");
             var healthTexture = Content.Load<Texture2D>("lava_tile1");
             var healthBarTexture = Content.Load<Texture2D>("HeallthSubBur");
-            player = new Player(animationDictionary, healthTexture, healthBarTexture);
-            levelModel = new LevelModel(player);
+            Player = new Player(animationDictionary, healthTexture, healthBarTexture);
+            ScoresConteter = new ScoresCounter(Content.Load<SpriteFont>("ScoresCounterFont\\ScoresConterFont"), Player);
+            LevelModel = new LevelModel(Player);
             var grassTexture = Content.Load<Texture2D>("LevelTexture\\grass");
             var rassTexture = Content.Load<Texture2D>("LevelTexture\\dirth");
             var grassGrondLeft = Content.Load<Texture2D>("LevelTexture\\grassGrondLeft");
             var grassGrondMiddle = Content.Load<Texture2D>("LevelTexture\\grassGrondMiddle");
             var grassGrondRight = Content.Load<Texture2D>("LevelTexture\\grassGrondRight");
-            firstevel = new Firstevel(Content.Load<Texture2D>("firstLevelBackground"), levelModel,
-                grassTexture, rassTexture, grassGrondLeft, grassGrondMiddle, grassGrondRight);
+            var finalStone = Content.Load<Texture2D>("LevelTexture\\finalStone");
+            var finalStoneOn = Content.Load<Texture2D>("LevelTexture\\finalStoneOn");
+            Firstevel = new Firstevel(Content.Load<Texture2D>("firstLevelBackground"), LevelModel,
+                grassTexture, rassTexture, grassGrondLeft, grassGrondMiddle, grassGrondRight, crystal,finalStone, finalStoneOn, ScoresConteter);
         }
 
         protected override void UnloadContent()
@@ -76,19 +79,19 @@ namespace Game1
         protected override void Update(GameTime gameTime)
         {
             gameState.Update();
-            mainBackground.Update(gameState);
-            firstevel.Update(gameState);
-            player.Update(gameTime, gameState);
+            MainBackground.Update(gameState);
+            Firstevel.Update(gameState);
+            Player.Update(gameTime, gameState);
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
             spriteBatch.Begin();
-            mainBackground.Draw(spriteBatch);
-            firstevel.Draw(spriteBatch);
-            player.Draw(spriteBatch);
+            MainBackground.Draw(spriteBatch);
+            Firstevel.Draw(spriteBatch);
+            Player.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }

@@ -14,15 +14,23 @@
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/Idle.png</File>
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/lava_tile1.png</File>
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/LevelTexture/dirth.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/LevelTexture/finalStone.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/LevelTexture/finalStoneOn.png</File>
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/LevelTexture/grass.png</File>
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/LevelTexture/grassGrondLeft.png</File>
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/LevelTexture/grassGrondMIddle.png</File>
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/LevelTexture/grassGrondRight.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/LevelTexture/purpleCrystal.png</File>
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/mainFont.spritefont</File>
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/Run.png</File>
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/RunLeft.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/ScoresCounterFont/ScoresConterFont.spritefont</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
