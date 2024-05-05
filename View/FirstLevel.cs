@@ -9,7 +9,7 @@ namespace rpgame2
 {
     public class Firstevel
     {
-        private GameState GameState;
+        public GameState GameState { get; private set; }
         public LevelModel LevelModel { get; private set; }
         public Texture2D BackgroundImage { get; private set; }
         public Texture2D GrassTexture { get; private set; }

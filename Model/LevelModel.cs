@@ -34,7 +34,10 @@ namespace rpgame2.Model
         {
             PlayerModel = player.PlayerModel;
             MapInform = new MapInfo();
+            MapInform.CurrentMap = MapInform.mapMatrixFirstLevel;
             MapInform.Blocks = new List<Rectangle>();
+            MapInform.Graph = new Graph();
+            MapInform.MakeGraph();
             MapInform.Crystal = new List<Rectangle>();
             PositionOfPortal = new Point();
             sizeOfElement = 48;
@@ -56,14 +59,14 @@ namespace rpgame2.Model
         }
         public static void GetBlockRectangle()
         {
-            for (int y = 0; y < MapInform.mapMatrixFirstLevel.GetLength(0); y++)
-                for (int x = 0; x < MapInform.mapMatrixFirstLevel.GetLength(1); x++)
-                    if (MapInform.mapMatrixFirstLevel[y, x] != 9 && MapInform.mapMatrixFirstLevel[y, x] != 0)
+            for (int y = 0; y < MapInform.CurrentMap.GetLength(0); y++)
+                for (int x = 0; x < MapInform.CurrentMap.GetLength(1); x++)
+                    if (MapInform.CurrentMap[y, x] != 9 && MapInform.CurrentMap[y, x] != 0)
                     {
-                        if (MapInform.mapMatrixFirstLevel[y, x] == 5) MapInform.Crystal.Add(new Rectangle(x * sizeOfElement, y * sizeOfElement, sizeOfElement, sizeOfElement));
+                        if (MapInform.CurrentMap[y, x] == 5) MapInform.Crystal.Add(new Rectangle(x * sizeOfElement, y * sizeOfElement, sizeOfElement, sizeOfElement));
                         else
                         {
-                            if (MapInform.mapMatrixFirstLevel[y, x] == 6) PositionOfPortal = new Point(y, x);
+                            if (MapInform.CurrentMap[y, x] == 6) PositionOfPortal = new Point(y, x);
                             MapInform.Blocks.Add(new Rectangle(x * sizeOfElement, y * sizeOfElement, sizeOfElement, sizeOfElement));
                         }
                     }
@@ -82,7 +85,7 @@ namespace rpgame2.Model
 
         public void IsCompleteLevel()
         {
-            if (MapInform.Crystal.Count == 0) MapInform.mapMatrixFirstLevel[PositionOfPortal.X, PositionOfPortal.Y] = 7;
+            if (MapInform.Crystal.Count == 0) MapInform.CurrentMap[PositionOfPortal.X, PositionOfPortal.Y] = 7;
         }
 
         public void Update()
