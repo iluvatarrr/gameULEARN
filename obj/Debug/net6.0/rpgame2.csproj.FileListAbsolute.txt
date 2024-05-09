@@ -46,3 +46,14 @@ C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\LevelTexture\purpleC
 C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\ScoresCounterFont\ScoresConterFont.xnb
 C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\LevelTexture\finalStone.xnb
 C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\LevelTexture\finalStoneOn.xnb
+C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\OrcAnimation\Attack_1.xnb
+C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\OrcAnimation\Dead.xnb
+C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\OrcAnimation\Idle.xnb
+C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\OrcAnimation\Run.xnb
+C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\PlayerAnimation\Attack1.xnb
+C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\PlayerAnimation\Attack2.xnb
+C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\PlayerAnimation\Attack3.xnb
+C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\PlayerAnimation\Idle1.xnb
+C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\PlayerAnimation\Run1.xnb
+C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\PlayerAnimation\RunLeft1.xnb
+C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\PlayerAnimation\Dead1.xnb

@@ -7,14 +7,12 @@ using rpgame2.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace rpgame2.Model
 {
     public class PlayerModel : Mob
     {
-
-        private MouseState pastState;
-
         public float Speed = 3f;
         public float Jump = 90f;
         public float Gravity = 3f;
@@ -24,9 +22,12 @@ namespace rpgame2.Model
         public int Strange = 10;
         public bool isHit = false;
         public Vector2 PositionBeforeJump = new Vector2(float.PositiveInfinity, float.PositiveInfinity);
-
+        public AnimationController controller;
+        public Dictionary<string, Animation> animations;
         KeyboardState oldKeyboardState;
         KeyboardState keyboardState;
+        public Vector2 Position = new Vector2(0, 380);
+        public Vector2 Gloal = new Vector2(0, 380);
 
         private Input Input = new Input()
         {
@@ -53,25 +54,39 @@ namespace rpgame2.Model
 
         public void AddGem() => Gems++;
 
-        public void HitLogic()
+        public void AddKill() => Gems+=10;
+
+
+        public int HelpHitLogic(int damage)
         {
-            if (keyboardState.IsKeyUp(Input.Fight) && oldKeyboardState.IsKeyDown(Input.Fight)
-                || keyboardState.IsKeyDown(Input.Fight2) && oldKeyboardState.IsKeyDown(Input.Fight2)
-                || keyboardState.IsKeyDown(Input.Fight3) && oldKeyboardState.IsKeyDown(Input.Fight3))
+            if (controller.animation.FrameCount - 1 == controller.animation.CurrentFrame && controller.timer < 0.000001f)
+            {
                 isHit = true;
-            else isHit = false;
+                return damage;
+            }
+            else
+            {
+                isHit = false;
+                return 0;
+            }
+        }
+
+        public int HitLogic()
+        {
+            if (keyboardState.IsKeyDown(Input.Fight)) return HelpHitLogic(50);
+            if (keyboardState.IsKeyDown(Input.Fight2)) return HelpHitLogic(25);
+            if (keyboardState.IsKeyDown(Input.Fight3)) return HelpHitLogic(10);
+            else
+            {
+                isHit = false;
+                return 0;
+            }
         }
 
         public void ChangeHealth()
         {
-            MouseState MouseState = Mouse.GetState();
-            Rectangle MouseRect = new Rectangle(pastState.X, pastState.Y, 1, 1);
-
-            if (MouseRect.Intersects(Rectangle) && (MouseState.LeftButton == ButtonState.Pressed && pastState.LeftButton == ButtonState.Pressed))
-                if (controller.timer < 0.000001f) Health -= 10;
             if (Health < 1) IsDead = true;
             if (IsDead) Health = 0;
-            pastState = MouseState;
         }
 
         private void Move()
@@ -87,15 +102,12 @@ namespace rpgame2.Model
         {
                 
             if (keyboardState.IsKeyDown(Input.Jump) && onGravity == false)
-            {
                 if (controller.timer < 0.000001f)
                 {
                     Position.Y -= Jump;
-                    Velocity.Y = -45f;
+                    Velocity.Y = -Jump/2;
                     onGravity = true;
                 }
-                
-            }
             Velocity.Y += Gravity;
             if (onGravity == false)
             {
@@ -123,8 +135,7 @@ namespace rpgame2.Model
 
         public virtual void Update(GameTime gameTime)
         {
-            keyboardState = Keyboard.GetState();
-
+            keyboardState = Input.GetState();
             oldKeyboardState = keyboardState;
             controller.Update(gameTime);
             UpdatePositionController();

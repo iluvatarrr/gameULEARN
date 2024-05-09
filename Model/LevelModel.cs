@@ -2,6 +2,7 @@
 using rpgame2.View;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 
@@ -11,7 +12,7 @@ namespace rpgame2.Model
     {
         public readonly static int marginBlockLeftRight = 40;
         public readonly static int marginPlayerTop = 90;
-        private static int marginFromTop = 3;
+        private static int marginFromTop = 1;
 
         public static bool OnPlatform(this Rectangle r1, Rectangle r2)
         {
@@ -25,12 +26,20 @@ namespace rpgame2.Model
     public class LevelModel
     {
         public PlayerModel PlayerModel { get; private set; }
+        public static Vector2 TileOfPlayer;
+        public static Vector2 TileOfOrc;
+        public static Node NodeOfOrc;
+        public static Vector2 previousPositionOfOrc;
+        public static Node NodeOfPlayer;
+        public static List<Node> path;
+        public OrcModel OrcModel { get; private set; }
+
         public static MapInfo MapInform;
-        private Mob enemy;
+
         public static int sizeOfElement { get; private set; }
         public static Point PositionOfPortal { get; private set; }
 
-        public LevelModel(Player player)
+        public LevelModel(Player player, Orc orc)
         {
             PlayerModel = player.PlayerModel;
             MapInform = new MapInfo();
@@ -42,12 +51,19 @@ namespace rpgame2.Model
             PositionOfPortal = new Point();
             sizeOfElement = 48;
             GetBlockRectangle();
+            OrcModel = orc.OrcModel;
         }
 
         public void SetDamage()
         {
-            if (PlayerModel.Position.X == (enemy.Position.X + 1) && PlayerModel.isHit)
-                enemy.Health -= PlayerModel.Strange;
+            if (PlayerModel.Rectangle.Intersects(OrcModel.Rectangle) && PlayerModel.isHit)
+                    OrcModel.Health -= PlayerModel.HitLogic();
+            if (PlayerModel.Rectangle.Intersects(OrcModel.Rectangle) && !PlayerModel.IsDead && !OrcModel.IsDead)
+            {
+                OrcModel.OrcState = OrcState.Hit;
+                PlayerModel.Health -= OrcModel.HitLogic();
+            }
+            else OrcModel.OrcState = OrcState.Stay;
         }
 
         private bool InNotMap()
@@ -77,7 +93,7 @@ namespace rpgame2.Model
             foreach (var gem in MapInform.Crystal.ToArray())
                 if (PlayerModel.Rectangle.Intersects(gem))
                 {
-                    MapInform.mapMatrixFirstLevel[gem.Y / 48, gem.X / 48] = 0;
+                    MapInform.mapMatrixFirstLevel[gem.Y / sizeOfElement, gem.X / sizeOfElement] = 0;
                     MapInform.Crystal.Remove(gem);
                     PlayerModel.AddGem();
                 }
@@ -90,6 +106,21 @@ namespace rpgame2.Model
 
         public void Update()
         {
+            if (MapInform.Blocks.Any(platform => PlayerModel.Rectangle.OnPlatform(platform)))
+            {
+                TileOfPlayer = new Vector2(MapInform.Blocks.Where(platform => PlayerModel.Rectangle.OnPlatform(platform)).First().X / sizeOfElement,
+                    MapInform.Blocks.Where(platform => PlayerModel.Rectangle.OnPlatform(platform)).First().Y / sizeOfElement);
+                TileOfOrc = new Vector2((int)(OrcModel.Position.X / sizeOfElement), (int)(OrcModel.Rectangle.Bottom / sizeOfElement));
+                if (MapInform.Graph.IsNewPosition(TileOfOrc)) TileOfOrc = previousPositionOfOrc;
+                else
+                {
+                    NodeOfOrc = MapInform.Graph.FindNodeByPosition(TileOfOrc);
+                    previousPositionOfOrc = TileOfOrc;
+                }
+                NodeOfPlayer = MapInform.Graph.FindNodeByPosition(TileOfPlayer);
+            }
+            if (GameState.State.Equals(State.Game))
+                SetDamage();
             if (!PlayerModel.IsDead)
             {
                 CheckCurrentGems();
@@ -101,6 +132,12 @@ namespace rpgame2.Model
                 PlayerModel.onGravity = false;
             }
             else PlayerModel.onGravity = true;
+            if (MapInform.Blocks.Any(platform => OrcModel.Rectangle.OnPlatform(platform)))
+            {
+                OrcModel.Velocity.Y = 0f;
+                OrcModel.onGravity = false;
+            }
+            else OrcModel.onGravity = true;
             if (InNotMap()) PlayerModel.IsDead = true;
         }
     }

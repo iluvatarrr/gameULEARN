@@ -3,18 +3,13 @@ using Microsoft.Xna.Framework.Graphics;
 using rpgame2.Model;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace rpgame2.View
 {
     public class Player
     {
-        private GameState GameState;
         protected Texture2D texture;
         public Texture2D TextureHealth;
         public Texture2D HealthBarTexture;
@@ -38,14 +33,12 @@ namespace rpgame2.View
             PlayerModel.animations = currentAnimations;
             PlayerModel.controller = new AnimationController(PlayerModel.animations.First().Value);
             TextureHealth = textureHealth;
-            PlayerModel.Position = new Vector2(0, 380);
             HealthBarTexture = healthBarTexture;
         }
 
-        public virtual void Update(GameTime gameTime, GameState gameState) 
+        public virtual void Update(GameTime gameTime) 
         {
             PlayerModel.ChangeHealth();
-            GameState = gameState;
             PlayerModel.Update(gameTime);
         }
     }

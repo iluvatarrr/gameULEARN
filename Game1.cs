@@ -2,7 +2,6 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using rpgame2;
-using rpgame2.Controller;
 using rpgame2.Model;
 using rpgame2.View;
 using System.Collections.Generic;
@@ -15,12 +14,12 @@ namespace Game1
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-
         public static int ScreenWidth = 1280;
         public static int ScreenHeight = 720;
         private Player Player;
+        private Orc Orc;
         private LevelModel LevelModel;
-        private GameState gameState;
+        public static GameState gameState;
         private Menu MainBackground;
         private Firstevel Firstevel;
         private ScoresCounter ScoresConteter;
@@ -41,27 +40,37 @@ namespace Game1
 
         protected override void LoadContent()
         {
-
             spriteBatch = new SpriteBatch(GraphicsDevice);
             MainBackground = new Menu(Content.Load<Texture2D>("Battleground3"), Content.Load<SpriteFont>("mainFont"));
             var animationDictionary = new Dictionary<string, Animation>()
             {
-                { "WalkUp", new Animation(Content.Load<Texture2D>("Run"), 6) },
-                { "WalkDown", new Animation(Content.Load<Texture2D>("Run"),6) },
-                { "WalkLeft", new Animation(Content.Load<Texture2D>("RunLeft"), 6) },
-                { "WalkRight", new Animation(Content.Load<Texture2D>("Run"), 6) },
-                { "None", new Animation(Content.Load<Texture2D>("Idle"), 6) },
-                { "Fight", new Animation(Content.Load<Texture2D>("Attack_1"), 4) },
-                { "Fight2", new Animation(Content.Load<Texture2D>("Attack_2"), 4) },
-                { "Fight3", new Animation(Content.Load<Texture2D>("Attack_3"), 4) },
-                { "death", new Animation(Content.Load<Texture2D>("Dead"), 4) },
+                { "WalkUp", new Animation(Content.Load<Texture2D>("PlayerAnimation\\Run1"), 6) },
+                { "WalkDown", new Animation(Content.Load<Texture2D>("PlayerAnimation\\Run1"),6) },
+                { "WalkLeft", new Animation(Content.Load<Texture2D>("PlayerAnimation\\RunLeft1"), 6) },
+                { "WalkRight", new Animation(Content.Load<Texture2D>("PlayerAnimation\\Run1"), 6) },
+                { "None", new Animation(Content.Load<Texture2D>("PlayerAnimation\\Idle1"), 6) },
+                { "Fight", new Animation(Content.Load<Texture2D>("PlayerAnimation\\Attack1"), 4) },
+                { "Fight2", new Animation(Content.Load<Texture2D>("PlayerAnimation\\Attack2"), 4) },
+                { "Fight3", new Animation(Content.Load<Texture2D>("PlayerAnimation\\Attack3"), 4) },
+                { "death", new Animation(Content.Load<Texture2D>("PlayerAnimation\\Dead1"), 4) },
             };
+            var animationOrcDictionary = new Dictionary<string, Animation>()
+            {
+                { "WalkUp", new Animation(Content.Load<Texture2D>("OrcAnimation\\Run"), 6) },
+                { "WalkDown", new Animation(Content.Load<Texture2D>("OrcAnimation\\Run"),6) },
+                { "WalkLeft", new Animation(Content.Load<Texture2D>("OrcAnimation\\Run"), 6) },
+                { "WalkRight", new Animation(Content.Load<Texture2D>("OrcAnimation\\Run"), 6) },
+                { "None", new Animation(Content.Load<Texture2D>("OrcAnimation\\Idle"), 5) },
+                { "Fight", new Animation(Content.Load<Texture2D>("OrcAnimation\\Attack_1"), 4) },
+                { "death", new Animation(Content.Load<Texture2D>("OrcAnimation\\Dead"), 4) },
+            };
+            Orc = new Orc(animationOrcDictionary);
             var crystal = Content.Load<Texture2D>("LevelTexture\\purpleCrystal");
             var healthTexture = Content.Load<Texture2D>("lava_tile1");
             var healthBarTexture = Content.Load<Texture2D>("HeallthSubBur");
             Player = new Player(animationDictionary, healthTexture, healthBarTexture);
             ScoresConteter = new ScoresCounter(Content.Load<SpriteFont>("ScoresCounterFont\\ScoresConterFont"), Player);
-            LevelModel = new LevelModel(Player);
+            LevelModel = new LevelModel(Player, Orc);
             var grassTexture = Content.Load<Texture2D>("LevelTexture\\grass");
             var rassTexture = Content.Load<Texture2D>("LevelTexture\\dirth");
             var grassGrondLeft = Content.Load<Texture2D>("LevelTexture\\grassGrondLeft");
@@ -75,14 +84,16 @@ namespace Game1
 
         protected override void UnloadContent()
         {
+
         }
 
         protected override void Update(GameTime gameTime)
         {
             gameState.Update();
-            MainBackground.Update(gameState);
-            Firstevel.Update(gameState);
-            Player.Update(gameTime, gameState);
+            MainBackground.Update();
+            Firstevel.Update();
+            Player.Update(gameTime);
+            Orc.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -92,6 +103,7 @@ namespace Game1
             spriteBatch.Begin();
             MainBackground.Draw(spriteBatch);
             Firstevel.Draw(spriteBatch);
+            Orc.Draw(spriteBatch);
             Player.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);

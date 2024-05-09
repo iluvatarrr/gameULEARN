@@ -1,12 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-
+using rpgame2.Model;
 
 namespace rpgame2
 {
     public class Menu
     {
-        private GameState GameState;
         public Texture2D BackgroundImage { get; set; }
         public SpriteFont SpriteFont { get; set; }
 
@@ -20,9 +19,8 @@ namespace rpgame2
         private Color color;
         private Vector2 textPosition = new Vector2(100, 270);
 
-        public void Update(GameState gameState)
+        public void Update()
         {
-            GameState = gameState;
             if (timeCounter <= 255)
             {
                 color = Color.FromNonPremultiplied(255, 255, 255, timeCounter % 256);

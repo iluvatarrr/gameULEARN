@@ -40,9 +40,8 @@ namespace rpgame2
             ScoresConteter = scoresConteter;
         }
 
-        public void Update(GameState gameState)
+        public void Update()
         {
-            GameState = gameState;
             LevelModel.Update();
         }
 

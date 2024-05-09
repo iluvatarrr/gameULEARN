@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Game1;
 
-namespace rpgame2
+namespace rpgame2.Model
 {
     public enum State
     {
@@ -19,8 +19,8 @@ namespace rpgame2
 
     public class GameState
     {
-        public State State { get; private set; }
-        public GameState(State state) 
+        public static State State { get; private set; }
+        public GameState(State state)
         {
             State = state;
         }

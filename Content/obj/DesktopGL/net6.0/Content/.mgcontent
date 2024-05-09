@@ -4,14 +4,9 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/Attack_1.png</File>
-    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/Attack_2.png</File>
-    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/Attack_3.png</File>
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/Battleground3.png</File>
-    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/Dead.png</File>
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/firstLevelBackground.png</File>
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/HeallthSubBur.png</File>
-    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/Idle.png</File>
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/lava_tile1.png</File>
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/LevelTexture/dirth.png</File>
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/LevelTexture/finalStone.png</File>
@@ -22,11 +17,24 @@
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/LevelTexture/grassGrondRight.png</File>
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/LevelTexture/purpleCrystal.png</File>
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/mainFont.spritefont</File>
-    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/Run.png</File>
-    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/RunLeft.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/OrcAnimation/Attack_1.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/OrcAnimation/Dead.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/OrcAnimation/Idle.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/OrcAnimation/Run.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/PlayerAnimation/Attack1.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/PlayerAnimation/Attack2.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/PlayerAnimation/Attack3.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/PlayerAnimation/Dead1.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/PlayerAnimation/Idle1.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/PlayerAnimation/Run1.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/PlayerAnimation/RunLeft1.png</File>
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/ScoresCounterFont/ScoresConterFont.spritefont</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

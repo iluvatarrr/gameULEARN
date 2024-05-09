@@ -4,6 +4,7 @@ using System.Linq;
 using Microsoft.Xna.Framework;
 
 //Взял с курса, дописал некоторые метоы для удобства
+//Сделал это для ускорения разработки
 
 namespace rpgame2.Model
 {
@@ -32,6 +33,7 @@ namespace rpgame2.Model
     {
         readonly List<Edge> edges = new List<Edge>();
         public Vector2 Position;
+        public Node Previous { get; set; }
         public Node(Vector2 position)
         {
             Position = position;

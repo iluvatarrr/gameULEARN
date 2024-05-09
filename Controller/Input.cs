@@ -19,5 +19,7 @@ namespace rpgame2.Controller
         public Keys Fight3 { get; set; }
         public Keys Jump { get; set; }
         public Keys None { get; set; }
+
+        public KeyboardState GetState() => Keyboard.GetState();
     }
 }
