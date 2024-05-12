@@ -17,7 +17,7 @@ namespace Game1
         public static int ScreenWidth = 1280;
         public static int ScreenHeight = 720;
         private Player Player;
-        private Orc Orc;
+        private List<Orc> OrcList;
         private LevelModel LevelModel;
         public static GameState gameState;
         private Menu MainBackground;
@@ -64,13 +64,20 @@ namespace Game1
                 { "Fight", new Animation(Content.Load<Texture2D>("OrcAnimation\\Attack_1"), 4) },
                 { "death", new Animation(Content.Load<Texture2D>("OrcAnimation\\Dead"), 4) },
             };
-            Orc = new Orc(animationOrcDictionary);
             var crystal = Content.Load<Texture2D>("LevelTexture\\purpleCrystal");
             var healthTexture = Content.Load<Texture2D>("lava_tile1");
             var healthBarTexture = Content.Load<Texture2D>("HeallthSubBur");
             Player = new Player(animationDictionary, healthTexture, healthBarTexture);
             ScoresConteter = new ScoresCounter(Content.Load<SpriteFont>("ScoresCounterFont\\ScoresConterFont"), Player);
-            LevelModel = new LevelModel(Player, Orc);
+            LevelModel = new LevelModel(Player);
+            OrcList = new List<Orc>();
+            for (var i = 0; i < LevelModel.PositionOrcList.Count; i++)
+            {
+                var orc = new Orc(animationOrcDictionary);
+                orc.OrcModel.Position = LevelModel.PositionOrcList[i];
+                OrcList.Add(orc);
+            }
+            LevelModel.OrcList = OrcList;
             var grassTexture = Content.Load<Texture2D>("LevelTexture\\grass");
             var rassTexture = Content.Load<Texture2D>("LevelTexture\\dirth");
             var grassGrondLeft = Content.Load<Texture2D>("LevelTexture\\grassGrondLeft");
@@ -93,7 +100,8 @@ namespace Game1
             MainBackground.Update();
             Firstevel.Update();
             Player.Update(gameTime);
-            Orc.Update(gameTime);
+            foreach (var orc in OrcList)
+                orc.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -103,7 +111,8 @@ namespace Game1
             spriteBatch.Begin();
             MainBackground.Draw(spriteBatch);
             Firstevel.Draw(spriteBatch);
-            Orc.Draw(spriteBatch);
+            foreach (var orc in OrcList)
+                orc.Draw(spriteBatch);
             Player.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);

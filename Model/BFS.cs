@@ -3,15 +3,18 @@ using Microsoft.Xna.Framework;
 
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 
 namespace rpgame2.Model
 {
     public static class BFS
     {
-        //IEnumerable<Node>
         public static IEnumerable<Node> FindWays(Node startNode, Node endNode)
         {
+            if (startNode.Position == endNode.Position)
+            {
+                yield return startNode;
+                yield break;
+            }
             var visited = new HashSet<Node>();
             var queue = new Queue<Node>();
             visited.Add(startNode);
@@ -21,10 +24,14 @@ namespace rpgame2.Model
                 var node = queue.Dequeue();
                 if (node.Equals(endNode))
                 {
-                    yield return node;
-                    yield break;
+                    var currentNode = endNode;
+                    while (currentNode != null)
+                    {
+                        yield return currentNode;
+                        currentNode = currentNode.Previous;
+                        if (currentNode.Equals(startNode)) yield break;
+                    }
                 }
-                yield return node;
                 foreach (var nextNode in node.IncidentNodes.Where(n => !visited.Contains(n)))
                 {
                     nextNode.Previous = node;
@@ -33,38 +40,5 @@ namespace rpgame2.Model
                 }
             }
         }
-
-        //public static List<Node> FindWays(Node startNode, Node endNode)
-        //{
-        //    var path = new List<Node>();
-        //    var visited = new HashSet<Node>();
-        //    var queue = new Queue<Node>();
-        //    visited.Add(startNode);
-        //    queue.Enqueue(startNode);
-        //    while (queue.Count != 0)
-        //    {
-        //        var node = queue.Dequeue();
-        //        if (node == null) break;
-        //        foreach (var nextNode in node.IncidentNodes.Where(n => !visited.Contains(n)))
-        //        {
-        //            nextNode.Previous = node;
-        //            visited.Add(nextNode);
-        //            queue.Enqueue(nextNode);
-        //        }
-        //    }
-        //    if (visited.Contains(endNode))
-        //    {
-        //        var currentNode = endNode;
-        //        while (currentNode != null && path.Count < 100000)
-        //        {
-        //            path.Add(currentNode);
-        //            currentNode = currentNode.Previous;
-        //        }
-        //        path.Reverse();
-        //        return path;
-
-        //    }
-        //    return path;
-        //}
     }
 }

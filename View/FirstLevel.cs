@@ -54,7 +54,7 @@ namespace rpgame2
                 for (int x = 0; x < LevelModel.MapInform.mapMatrixFirstLevel.GetLength(0); x++)
                     for (int y = 0; y < LevelModel.MapInform.mapMatrixFirstLevel.GetLength(1); y++)
                     {
-                        if (LevelModel.MapInform.mapMatrixFirstLevel[x, y] == 0) continue;
+                        if (LevelModel.MapInform.mapMatrixFirstLevel[x, y] == 0 || LevelModel.MapInform.mapMatrixFirstLevel[x, y] == 8) continue;
                         var posX = y * LevelModel.sizeOfElement;
                         var posY = x * LevelModel.sizeOfElement;
                         if (LevelModel.MapInform.mapMatrixFirstLevel[x, y] == 1) currentTexture = GrassTexture;

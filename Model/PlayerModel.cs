@@ -2,11 +2,13 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using rpgame2.Controller;
-using rpgame2.Model;
+using System;
+
 using rpgame2.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace rpgame2.Model
@@ -24,10 +26,12 @@ namespace rpgame2.Model
         public Vector2 PositionBeforeJump = new Vector2(float.PositiveInfinity, float.PositiveInfinity);
         public AnimationController controller;
         public Dictionary<string, Animation> animations;
-        KeyboardState oldKeyboardState;
         KeyboardState keyboardState;
         public Vector2 Position = new Vector2(0, 380);
-        public Vector2 Gloal = new Vector2(0, 380);
+        //public Vector2 Position = new Vector2(700, 0);
+        public Vector2 TileOfPlayer;
+        public Vector2 previousPositionOfPlayer;
+        public static Node NodeOfPlayer;
 
         private Input Input = new Input()
         {
@@ -133,10 +137,17 @@ namespace rpgame2.Model
             else controller.Play(animations["None"]);
         }
 
+        public void FindTile()
+        {
+            TileOfPlayer = new Vector2((float)Math.Round((double)Rectangle.Left / LevelModel.sizeOfElement),
+                (float)Math.Round((double)(Rectangle.Bottom - 5) / LevelModel.sizeOfElement));
+            if (MapInfo.Graph.IsNewPosition(TileOfPlayer)) TileOfPlayer = previousPositionOfPlayer;
+            else previousPositionOfPlayer = TileOfPlayer;
+        }
+
         public virtual void Update(GameTime gameTime)
         {
             keyboardState = Input.GetState();
-            oldKeyboardState = keyboardState;
             controller.Update(gameTime);
             UpdatePositionController();
             Move();
@@ -145,8 +156,9 @@ namespace rpgame2.Model
             Position += Velocity;
             Velocity = Vector2.Zero;
             if (IsDead) DeadInput();
-            Rectangle = new Rectangle((int)Position.X, (int)Position.Y, controller.animation.FrameWidth, controller.animation.FrameHeight);
+            Rectangle = new Rectangle((int)Position.X+24, (int)Position.Y, 48, controller.animation.FrameHeight);
             if ((Position.Y - PositionBeforeJump.Y) > (LevelModel.sizeOfElement * 2)) IsDead = true;
+            FindTile();
         }
     }
 }

@@ -12,32 +12,30 @@ namespace rpgame2.Model
         public int[,] mapMatrixFirstLevel =
         {
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 2, 3, 3, 3, 4, 0, 0, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 8, 5, 5, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 2, 3, 3, 3, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 3, 3, 4, 0, 0, 5, 5, 0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 3, 3, 3, 4, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, 8},
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 3, 4},
-            {0, 0, 0, 0, 5, 5, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, 5, 0, 0, 5, 5, 0, 0, 6, 0},
-            {0, 0, 0, 2, 3, 3, 3, 4, 0, 0, 5, 5, 5, 0, 0, 0, 2, 3, 4, 0, 0, 1, 1, 1, 1, 1, 1},
-            {0, 0, 5, 0, 0, 0, 0, 0, 0, 2, 3, 3, 3, 3, 4, 0, 0, 0, 0, 0, 0, 9, 9, 9, 9, 9, 9},
-            {1, 1, 1, 0, 0, 0, 0, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 9, 9, 9, 9, 9},
-            {9, 9, 9, 0, 0, 0, 2, 3, 3, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 9, 9, 9, 9, 9},
-            {9, 9, 9, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 9, 9, 9, 9, 9},
-            {9, 9, 9, 0, 2, 3, 3, 3, 3, 4, 0, 0, 5, 5, 5, 0, 0, 0, 0, 0, 0, 9, 9, 9, 9, 9, 9},
-            {9, 9, 9, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 3, 3, 4, 0, 0, 0, 0, 0, 9, 9, 9, 9, 9, 9},
+            {0, 0, 0, 0, 5, 5, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, 0, 0, 0, 5, 5, 0, 8, 6, 0},
+            {0, 0, 0, 2, 3, 3, 3, 4, 0, 8, 5, 5, 5, 0, 0, 2, 3, 4, 0, 0, 1, 1, 1, 1, 1, 1, 1},
+            {0, 0, 5, 0, 0, 0, 0, 0, 0, 2, 3, 3, 3, 4, 0, 0, 0, 0, 5, 0, 9, 9, 9, 9, 9, 9, 9},
+            {1, 1, 1, 0, 0, 0, 0, 5, 5, 0, 0, 0, 0, 0, 0, 0, 2, 3, 4, 0, 0, 8, 5, 5, 5, 9, 9},
+            {9, 9, 9, 0, 0, 0, 2, 3, 3, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 5, 5, 5, 9},
+            {9, 9, 9, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 9, 5, 5, 5, 5, 9},
+            {9, 9, 9, 0, 2, 3, 3, 3, 3, 4, 0, 0, 5, 5, 5, 0, 0, 0, 0, 0, 9, 9, 1, 1, 1, 1, 9},
+            {9, 9, 9, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 3, 3, 4, 0, 0, 0, 0, 9, 9, 9, 9, 9, 9, 9},
         };
 
-        public Graph Graph;
+        public static Graph Graph;
 
-        public void SubMethod(int Y, int X, Vector2 currentNodePosition)
+        public void TryConnect(int Y, int X, Vector2 currentNodePosition)
         {
-            if (this.CurrentMap[Y, X] == 1 || this.CurrentMap[Y, X] == 2
-                || this.CurrentMap[Y, X] == 3 || this.CurrentMap[Y, X] == 4)
+            if (this.CurrentMap[Y, X] == 1 || this.CurrentMap[Y, X] == 2 || this.CurrentMap[Y, X] == 3 || this.CurrentMap[Y, X] == 4)
             {
                 var aroundNodePosition = new Vector2(X, Y);
-                if (Graph.IsNewPosition(aroundNodePosition))
-                    Graph.nodes.Add(new Node(aroundNodePosition));
+                if (Graph.IsNewPosition(aroundNodePosition)) Graph.nodes.Add(new Node(aroundNodePosition));
                 if (Graph.FindNodeByPosition(currentNodePosition).IncidentNodes.All(x => x.Position != aroundNodePosition))
                     Graph.Connect(currentNodePosition, aroundNodePosition);
             }
@@ -51,33 +49,33 @@ namespace rpgame2.Model
                     if (IsLast)
                         if (i == 0 && j == 0 || i == 1 && j == -1 || i == 1 && j == 0 || i == 1 && j == 1) continue;
                     if (i == 0 && j == 0) continue;
-                    SubMethod((y + i), (x + j), currentNodePosition);
+                    TryConnect((y + i), (x + j), currentNodePosition);
                 }
         }
 
         public void MakeHeightVertex(Vector2 currentNodePosition, int y, int x)
         {
             if (y <= 2) return;
-            SubMethod((y - 2), (x + 1), currentNodePosition);
-            SubMethod((y - 2), (x - 1), currentNodePosition);
-            SubMethod((y - 2), x, currentNodePosition);
+            TryConnect((y - 2), (x + 1), currentNodePosition);
+            TryConnect((y - 2), (x - 1), currentNodePosition);
+            TryConnect((y - 2), x, currentNodePosition);
         }
 
         public void MakeWidthVertex(Vector2 currentNodePosition, int y, int x, int MapWidth)
         {
             if (!(x > 1 && y > 1 && x < MapWidth - 2)) return;
-            SubMethod((y - 1), (x - 2), currentNodePosition);
-            SubMethod((y - 1), (x + 2), currentNodePosition);
+            TryConnect((y - 1), (x - 2), currentNodePosition);
+            TryConnect((y - 1), (x + 2), currentNodePosition);
         }
 
         public void MakeLongWidthVertex(Vector2 currentNodePosition, int y, int x, int MapWidth)
         {
-            for (var g = 1; g < 4; g++)
+            for (var g = 1; g < 3; g++)
             {
                 if (x > g && y > 1 && x < (MapWidth - (g + 1)))
                 {
-                    SubMethod((y), (x - (g + 1)), currentNodePosition);
-                    SubMethod((y), (x + (g + 1)), currentNodePosition);
+                    TryConnect((y), (x - (g + 1)), currentNodePosition);
+                    TryConnect((y), (x + (g + 1)), currentNodePosition);
                 }
             }
         }
