@@ -42,7 +42,7 @@ namespace rpgame2.View
             {
                 timer = 0f;
                 animation.CurrentFrame++;
-                if (animation.CurrentFrame  == (animation.FrameCount- 1)) animation.IsFinished = true;
+                if (animation.CurrentFrame == (animation.FrameCount - 1)) animation.IsFinished = true;
                 if (animation.CurrentFrame >= animation.FrameCount) animation.CurrentFrame = 0;
             }
         }

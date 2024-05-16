@@ -1,14 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
-using rpgame2.Controller;
 using rpgame2.View;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Xml.Linq;
-
 
 namespace rpgame2.Model
 {
@@ -29,14 +23,18 @@ namespace rpgame2.Model
         public bool isHit = false;
         public int Strange = 1;
         public float Jump = 100f;
-        public float JumpHorizontal = 120f;
+        public float JumpHorizontal = 145f;
         public AnimationController controller;
         public Dictionary<string, Animation> animations;
         public IEnumerable<Node> way;
+        public IEnumerable<Rectangle> currentBlock;
+        public Vector2 LastTile;
         public Vector2 TileOfOrc;
         public Vector2 previousPositionOfOrc;
         public Node NodeOfOrc;
-        public static List<Node> currentWay;
+        public List<Node> currentWay;
+        public bool mayDelite = false;
+
         public void JumpUp()
         {
             Position.Y -= JumpHorizontal;
@@ -46,7 +44,7 @@ namespace rpgame2.Model
         public void Move()
         {
             if (NodeOfOrc == null) return;
-            way = BFS.FindWays(NodeOfOrc, LevelModel.NodeOfPlayer);
+            way = BFS.FindWays(NodeOfOrc, PlayerModel.NodeOfPlayer);
             currentWay = way.ToList();
             if (currentWay.Count < 1) return;
             var firstNode = NodeOfOrc;
@@ -63,8 +61,8 @@ namespace rpgame2.Model
                 Position.X -= Speed;
                 if (difference.X > 2) JumpUp();
             }
-            else if (difference.X == 0 && difference.Y < 0) Position.Y += Speed / 20;
-            else if (difference.X == 0 && difference.Y > 0) Position.Y -= Jump;
+            else if (difference.X == 0 && difference.Y < 0) Position.Y += Speed / 2;
+            else if (difference.X == 0 && difference.Y > 0) Position.Y -= Jump / 7; //deli na 7
             else if (difference.X > 0 && difference.Y < 0)
             {
                 Position.X -= Speed;
@@ -110,20 +108,26 @@ namespace rpgame2.Model
         public void ChangeHealth()
         {
             if (Health < 1) IsDead = true;
-            if (IsDead) Health = 0;
+            if (IsDead)
+            {
+                OrcState = OrcState.Dead;
+                Health = 0;
+            }
         }
 
         public void SetAnimation()
         {
             if (OrcState.Equals(OrcState.Run)) controller.Play(animations["WalkRight"]);
             else if (OrcState.Equals(OrcState.Hit)) controller.Play(animations["Fight"]);
-            else if (IsDead)
+            else if (OrcState.Equals(OrcState.Dead))
             {
                 controller.Play(animations["death"]);
                 controller.animation.IsLooping = false;
+                if (controller.animation.CurrentFrame == controller.animation.FrameCount - 1 && IsDead) mayDelite = true;
             }
             else controller.Play(animations["None"]);
         }
+
         public void UpdatePositionController()
         {
             if (controller != null) controller.Position = Position;
@@ -131,16 +135,41 @@ namespace rpgame2.Model
 
         public void FindTile()
         {
-            TileOfOrc = new Vector2((float)Math.Round((double)Rectangle.Left / LevelModel.sizeOfElement),
-                (float)Math.Round((double)(Rectangle.Bottom - 5) / LevelModel.sizeOfElement));
-            if (MapInfo.Graph.IsNewPosition(TileOfOrc)) TileOfOrc = previousPositionOfOrc;
+            //if (TileOfOrc != null)
+            //    LastTile = TileOfOrc;
+            //TileOfOrc = new Vector2((float)Math.Round((double)Rectangle.Left / LevelModel.sizeOfElement),
+            //    (float)Math.Round((double)(Rectangle.Bottom - 5) / LevelModel.sizeOfElement));
+
+            currentBlock = MapInfo.Blocks.Where(platform => Rectangle.OnPlatform(platform));
+            if (currentBlock.Count() > 0)
+            {
+                TileOfOrc = new Vector2((float)Math.Round((double)currentBlock.First().X / LevelModel.sizeOfElement),
+                     (float)Math.Round((double)currentBlock.First().Y / LevelModel.sizeOfElement));
+            }
+            //else
+            //{
+            //    TileOfOrc = new Vector2((float)Math.Round((double)Rectangle.Left / LevelModel.sizeOfElement),
+            //        (float)Math.Round((double)(Rectangle.Bottom - 5) / LevelModel.sizeOfElement));
+            //}
+            if (/*LastTile != null && */MapInfo.Graph.IsNewPosition(TileOfOrc) /*&& LastTile.Y - TileOfOrc.Y > 2*/) TileOfOrc = previousPositionOfOrc;
             else previousPositionOfOrc = TileOfOrc;
+        }
+
+        public void StayInMap()
+        {
+            if (Position.X >= Game1.Game1.ScreenWidth) Position.X -= 2;
+            if (Position.X < 0) Position.X += 2;
         }
 
         public void Update(GameTime gameTime)
         {
             controller.Update(gameTime);
-            if (GameState.State.Equals(State.Game) && !IsDead) Move();
+            if (GameState.CurrentState.Equals(State.Game) && !IsDead)
+            {
+                animations["death"].IsFinished = false;
+                Move();
+            }
+            StayInMap();
             JumpLogic();
             Position += Velocity;
             Velocity = Vector2.Zero;

@@ -1,6 +1,8 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"C:/Users/Dima/Desktop/game/rpgame2/Content/Battleground3.png","C:/Users/Dima/Desktop/game/rpgame2/Content/bin/DesktopGL/Content/Battleground3.xnb","TextureProcessor","Texture2DContent",1223903,3686485,0.1780538
-"C:/Users/Dima/Desktop/game/rpgame2/Content/firstLevelBackground.png","C:/Users/Dima/Desktop/game/rpgame2/Content/bin/DesktopGL/Content/firstLevelBackground.xnb","TextureProcessor","Texture2DContent",494232,3686485,0.1791355
+"C:/Users/Dima/Desktop/game/rpgame2/Content/Button/ButtonFont.spritefont","C:/Users/Dima/Desktop/game/rpgame2/Content/bin/DesktopGL/Content/Button/ButtonFont.xnb","FontDescriptionProcessor","SpriteFontContent",2237,270239,0.2039349
+"C:/Users/Dima/Desktop/game/rpgame2/Content/GameStateBG/Battleground3.png","C:/Users/Dima/Desktop/game/rpgame2/Content/bin/DesktopGL/Content/GameStateBG/Battleground3.xnb","TextureProcessor","Texture2DContent",1223903,3686485,0.1973559
+"C:/Users/Dima/Desktop/game/rpgame2/Content/GameStateBG/firstLevelBackground.png","C:/Users/Dima/Desktop/game/rpgame2/Content/bin/DesktopGL/Content/GameStateBG/firstLevelBackground.xnb","TextureProcessor","Texture2DContent",494232,3686485,0.0850503
+"C:/Users/Dima/Desktop/game/rpgame2/Content/GameStateBG/PauseBackground.png","C:/Users/Dima/Desktop/game/rpgame2/Content/bin/DesktopGL/Content/GameStateBG/PauseBackground.xnb","TextureProcessor","Texture2DContent",1542384,3686485,0.1915726
 "C:/Users/Dima/Desktop/game/rpgame2/Content/HeallthSubBur.png","C:/Users/Dima/Desktop/game/rpgame2/Content/bin/DesktopGL/Content/HeallthSubBur.xnb","TextureProcessor","Texture2DContent",17442,120085,0.0933672
 "C:/Users/Dima/Desktop/game/rpgame2/Content/lava_tile1.png","C:/Users/Dima/Desktop/game/rpgame2/Content/bin/DesktopGL/Content/lava_tile1.xnb","TextureProcessor","Texture2DContent",2837,16469,0.0017424
 "C:/Users/Dima/Desktop/game/rpgame2/Content/LevelTexture/dirth.png","C:/Users/Dima/Desktop/game/rpgame2/Content/bin/DesktopGL/Content/LevelTexture/dirth.xnb","TextureProcessor","Texture2DContent",3147,9301,0.0915787

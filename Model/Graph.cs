@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 
 //Взял с курса, дописал некоторые метоы для удобства
 //Сделал это для ускорения разработки
+//переписал много методов, по сути использую тольько свой код
 
 namespace rpgame2.Model
 {
@@ -73,21 +74,9 @@ namespace rpgame2.Model
     {
         public List<Node> nodes;
 
-        //public Graph(int nodesCount)
-        //{
-        //    nodes = Enumerable.Range(0, nodesCount).Select(z => new Node(z)).ToArray();
-        //}
-
-
-
         public int Length { get { return nodes.Count; } }
 
-        //public Node this[int index] { get { return nodes[index]; } }
-
-        public bool IsNewPosition(Vector2 Position)
-        {
-            return Nodes.All(s => s.Position != Position);
-        }
+        public bool IsNewPosition(Vector2 Position) => Nodes.All(s => s.Position != Position);
 
         public IEnumerable<Node> Nodes
         {
@@ -97,24 +86,13 @@ namespace rpgame2.Model
             }
         }
 
-        public void Connect(int index1, int index2)
-        {
-            Node.Connect(nodes[index1], nodes[index2], this);
-        }
-        public void Connect(Vector2 Position1, Vector2 Position2)
-        {
+        public void Connect(int index1, int index2) => Node.Connect(nodes[index1], nodes[index2], this);
+        public void Connect(Vector2 Position1, Vector2 Position2) => 
             Node.Connect(nodes.Where(x => x.Position == Position1).First(), nodes.Where(x => x.Position == Position2).First(), this);
-        }
 
-        public Node FindNodeByPosition(Vector2 Position)
-        {
-            return nodes.Where(x => x.Position == Position).First();
-        }
+        public Node FindNodeByPosition(Vector2 Position) => nodes.Where(x => x.Position == Position).First();
 
-        public void Delete(Edge edge)
-        {
-            Node.Disconnect(edge);
-        }
+        public void Delete(Edge edge) => Node.Disconnect(edge);
 
         public IEnumerable<Edge> Edges
         {
@@ -123,13 +101,5 @@ namespace rpgame2.Model
                 return nodes.SelectMany(z => z.IncidentEdges).Distinct();
             }
         }
-
-        //public static Graph MakeGraph(params int[] incidentNodes)
-        //{
-        //    var graph = new Graph(incidentNodes.Max() + 1);
-        //    for (int i = 0; i < incidentNodes.Length - 1; i += 2)
-        //        graph.Connect(incidentNodes[i], incidentNodes[i + 1]);
-        //    return graph;
-        //}
     }
 }

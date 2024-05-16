@@ -28,7 +28,6 @@ namespace rpgame2.Model
         public Dictionary<string, Animation> animations;
         KeyboardState keyboardState;
         public Vector2 Position = new Vector2(0, 380);
-        //public Vector2 Position = new Vector2(700, 0);
         public Vector2 TileOfPlayer;
         public Vector2 previousPositionOfPlayer;
         public static Node NodeOfPlayer;
@@ -36,7 +35,6 @@ namespace rpgame2.Model
         private Input Input = new Input()
         {
             Up = Keys.W,
-            Down = Keys.S,
             Left = Keys.A,
             Right = Keys.D,
             Fight = Keys.E,
@@ -96,7 +94,6 @@ namespace rpgame2.Model
         private void Move()
         {
             if (keyboardState.IsKeyDown(Input.Up)) Velocity.Y = -5*Speed;
-            else if (keyboardState.IsKeyDown(Input.Down)) Velocity.Y = Speed;
             else if (keyboardState.IsKeyDown(Input.Left)) Velocity.X = -Speed;
             else if (keyboardState.IsKeyDown(Input.Right)) Velocity.X = Speed;
             JumpLogic();
@@ -124,7 +121,7 @@ namespace rpgame2.Model
         {
             if (keyboardState.IsKeyDown(Input.Right)) controller.Play(animations["WalkRight"]);
             else if (keyboardState.IsKeyDown(Input.Left)) controller.Play(animations["WalkLeft"]);
-            else if (keyboardState.IsKeyDown(Input.Down)) controller.Play(animations["None"]);
+
             else if (keyboardState.IsKeyDown(Input.Up)) controller.Play(animations["WalkUp"]);
             else if (keyboardState.IsKeyDown(Input.Fight)) controller.Play(animations["Fight"]);
             else if (keyboardState.IsKeyDown(Input.Fight2)) controller.Play(animations["Fight2"]);
@@ -136,17 +133,24 @@ namespace rpgame2.Model
             }
             else controller.Play(animations["None"]);
         }
-
+        private bool InNotMap()
+        {
+            return (Position.X < -RectangleHelper.marginBlockLeftRight
+                    || Position.Y < -RectangleHelper.marginPlayerTop
+                    || Game1.Game1.ScreenWidth < Position.X
+                    || Game1.Game1.ScreenHeight < Position.Y);
+        }
         public void FindTile()
         {
             TileOfPlayer = new Vector2((float)Math.Round((double)Rectangle.Left / LevelModel.sizeOfElement),
-                (float)Math.Round((double)(Rectangle.Bottom - 5) / LevelModel.sizeOfElement));
+                (float)Math.Round((double)(Rectangle.Bottom - RectangleHelper.marginFromTop) / LevelModel.sizeOfElement));
             if (MapInfo.Graph.IsNewPosition(TileOfPlayer)) TileOfPlayer = previousPositionOfPlayer;
             else previousPositionOfPlayer = TileOfPlayer;
         }
 
         public virtual void Update(GameTime gameTime)
         {
+            if (InNotMap()) IsDead = true;
             keyboardState = Input.GetState();
             controller.Update(gameTime);
             UpdatePositionController();
@@ -156,7 +160,7 @@ namespace rpgame2.Model
             Position += Velocity;
             Velocity = Vector2.Zero;
             if (IsDead) DeadInput();
-            Rectangle = new Rectangle((int)Position.X+24, (int)Position.Y, 48, controller.animation.FrameHeight);
+            Rectangle = new Rectangle((int)Position.X+ LevelModel.sizeOfElement / 2, (int)Position.Y, LevelModel.sizeOfElement , LevelModel.sizeOfElement);
             if ((Position.Y - PositionBeforeJump.Y) > (LevelModel.sizeOfElement * 2)) IsDead = true;
             FindTile();
         }

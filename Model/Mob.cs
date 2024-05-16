@@ -6,7 +6,6 @@ namespace rpgame2
     {
         public Vector2 Position;
         public float Speed = 3f;
-        public float Jump = 90f;
         public float Gravity = 3f;
         public bool onGravity = true;
         public Vector2 Velocity;

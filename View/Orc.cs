@@ -27,12 +27,9 @@ namespace rpgame2.View
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            if (GameState.State.Equals(State.Game))
-            {
-                if (texture != null) spriteBatch.Draw(texture, OrcModel.Position, Color.White);
-                else if (OrcModel.controller != null) OrcModel.controller.Draw(spriteBatch);
-                else throw new Exception("Exception warning!!!");
-            }
+            if (texture != null) spriteBatch.Draw(texture, OrcModel.Position, Color.White);
+            else if (OrcModel.controller != null) OrcModel.controller.Draw(spriteBatch);
+            else throw new Exception("Exception warning!!!");
         }
     }
 }

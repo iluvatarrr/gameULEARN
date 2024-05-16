@@ -4,8 +4,10 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/Battleground3.png</File>
-    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/firstLevelBackground.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/Button/ButtonFont.spritefont</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/GameStateBG/Battleground3.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/GameStateBG/firstLevelBackground.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/GameStateBG/PauseBackground.png</File>
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/HeallthSubBur.png</File>
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/lava_tile1.png</File>
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/LevelTexture/dirth.png</File>
@@ -31,6 +33,8 @@
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/ScoresCounterFont/ScoresConterFont.spritefont</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

@@ -18,15 +18,13 @@ namespace rpgame2.View
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            if (GameState.State.Equals(State.Game))
-            {
                 spriteBatch.Draw(HealthBarTexture, new Vector2(5, 5), Color.White);
                 spriteBatch.Draw(TextureHealth, new Rectangle(95, 40, PlayerModel.Health * 2, 28), Color.White);
                 if (texture != null) spriteBatch.Draw(texture, PlayerModel.Position, Color.White);
                 else if (PlayerModel.controller != null) PlayerModel.controller.Draw(spriteBatch);
                 else throw new Exception("Exception warning!!!");
-            }
         }
+       
 
         public Player(Dictionary<string, Animation> currentAnimations, Texture2D textureHealth, Texture2D healthBarTexture)
         {

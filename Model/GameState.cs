@@ -1,11 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Game1;
+using rpgame2.Controller;
 
 namespace rpgame2.Model
 {
@@ -13,28 +7,52 @@ namespace rpgame2.Model
     {
         SplashScreen,
         Final,
+        ChoiceLevel,
         Game,
         Pause,
+        Settings,
+        Rules,
+        ZeroState
     }
 
     public class GameState
     {
-        public static State State { get; private set; }
-        public GameState(State state)
+        public static State PeviousState { get; set; }
+
+        public static State CurrentState { get; set; }
+        public static State NextState { get; set; }
+
+        private KeyboardState keyboardState;
+
+        public GameState(State state) => CurrentState = state;
+
+        public static void ChengeState(State state) => NextState = state;
+
+        private Input Input = new Input()
         {
-            State = state;
-        }
+            Escape = Keys.Escape,
+        };
 
         public void Update()
         {
-            switch (State)
+            keyboardState = Input.GetState();
+            switch (CurrentState)
             {
-                case State.SplashScreen:
-                    if (Keyboard.GetState().IsKeyDown(Keys.D1)) State = State.Game;
-                    break;
                 case State.Game:
-                    if (Keyboard.GetState().IsKeyDown(Keys.Escape)) State = State.SplashScreen;
+                    if (keyboardState.IsKeyDown(Input.Escape)) NextState = State.Pause;
                     break;
+                case State.Settings:
+                    if (keyboardState.IsKeyDown(Input.Escape)) NextState = State.SplashScreen;
+                    break;
+                case State.Rules:
+                    if (keyboardState.IsKeyDown(Input.Escape)) NextState = State.SplashScreen;
+                    break;
+            }
+            if (NextState != State.ZeroState)
+            {
+                PeviousState = CurrentState;
+                CurrentState = NextState;
+                NextState = State.ZeroState;
             }
         }
     }

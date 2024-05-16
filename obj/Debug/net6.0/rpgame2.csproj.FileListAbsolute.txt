@@ -25,7 +25,6 @@ C:\Users\Dima\Desktop\game\rpgame2\obj\Debug\net6.0\rpgame2.genruntimeconfig.cac
 C:\Users\Dima\Desktop\game\rpgame2\obj\Debug\net6.0\ref\rpgame2.dll
 C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\Battleground3.xnb
 C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\mainFont.xnb
-C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\firstLevelBackground.xnb
 C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\Run.xnb
 C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\Idle.xnb
 C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\Attack_1.xnb
@@ -57,3 +56,7 @@ C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\PlayerAnimation\Idle
 C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\PlayerAnimation\Run1.xnb
 C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\PlayerAnimation\RunLeft1.xnb
 C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\PlayerAnimation\Dead1.xnb
+C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\Button\ButtonFont.xnb
+C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\GameStateBG\PauseBackground.xnb
+C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\GameStateBG\Battleground3.xnb
+C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\GameStateBG\firstLevelBackground.xnb
