@@ -2,6 +2,7 @@
 using rpgame2.Controller;
 using rpgame2.Model;
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 
 namespace rpgame2.View
 {
@@ -12,28 +13,17 @@ namespace rpgame2.View
         public SpriteFont ButtonFont { get; private set; }
         public Texture2D ButtonTexture { get; private set; }
         public FinalModel FinalModel { get; private set; }
+        public List<Button> Buttons { get; private set; }
 
-        public Final(Texture2D backgroundImage, SpriteFont spriteFont, SpriteFont buttonFont)
+        public Final(Texture2D backgroundImage, SpriteFont spriteFont, SpriteFont buttonFont, FinalModel finalModel)
         {
-            FinalModel = new FinalModel();
+            FinalModel = finalModel;
+            Buttons = new List<Button>();
             BackgroundImage = backgroundImage;
             SpriteFont = spriteFont;
             ButtonFont = buttonFont;
-            var ChoiseButton = new Button(ButtonFont, new Vector2(100, 434), "Choise Level");
-            ChoiseButton.ButtonModel.Click += ButtonController.ChoiseButton;
-            var MenuButton = new Button(ButtonFont, new Vector2(100, 534), "Menu");
-            MenuButton.ButtonModel.Click += ButtonController.MenuButton;
-            var BackButton = new Button(ButtonFont, new Vector2(100, 634), "Back");
-            BackButton.ButtonModel.Click += ButtonController.BackButton;
-            FinalModel.Buttons.Add(ChoiseButton);
-            FinalModel.Buttons.Add(MenuButton);
-            FinalModel.Buttons.Add(BackButton);
-        }
-
-        public void Update()
-        {
-            foreach (var button in FinalModel.Buttons)
-                button.Update();
+            foreach (var button in FinalModel.ButtonsController)
+                Buttons.Add(new Button(ButtonFont, button.ButtonModel));
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -41,7 +31,7 @@ namespace rpgame2.View
             spriteBatch.Draw(BackgroundImage, Vector2.Zero, Color.White);
             spriteBatch.DrawString(SpriteFont, FinalModel.headerText, FinalModel.headertPosition, FinalModel.color);
             spriteBatch.DrawString(ButtonFont, FinalModel.rulesText, FinalModel.rulesPosition, FinalModel.color);
-            foreach (var button in FinalModel.Buttons)
+            foreach (var button in Buttons)
                 button.Draw(spriteBatch);
         }
     }

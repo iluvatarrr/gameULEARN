@@ -2,6 +2,8 @@
 using Microsoft.Xna.Framework;
 using rpgame2.Controller;
 using rpgame2.Model;
+using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
 
 namespace rpgame2.View
 {
@@ -12,22 +14,17 @@ namespace rpgame2.View
         public SpriteFont ButtonFont { get; private set; }
         public Texture2D ButtonTexture { get; private set; }
         public RulesModel RulesModel { get; private set; }
+        public List<Button> Buttons { get; private set; }
 
-        public Rules(Texture2D backgroundImage, SpriteFont spriteFont, SpriteFont buttonFont)
+        public Rules(Texture2D backgroundImage, SpriteFont spriteFont, SpriteFont buttonFont, RulesModel rulesModel)
         {
-            RulesModel = new RulesModel();
+            RulesModel = rulesModel;
+            Buttons = new List<Button>();
             BackgroundImage = backgroundImage;
             SpriteFont = spriteFont;
             ButtonFont = buttonFont;
-            var BackButton = new Button(ButtonFont, new Vector2(100, 634), "Back");
-            BackButton.ButtonModel.Click += ButtonController.BackButton;
-            RulesModel.Buttons.Add( BackButton );
-        }
-
-        public void Update()
-        {
-            foreach (var button in RulesModel.Buttons)
-                button.Update();
+            foreach (var button in RulesModel.ButtonsController)
+                Buttons.Add(new Button(ButtonFont, button.ButtonModel));
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -35,9 +32,8 @@ namespace rpgame2.View
             spriteBatch.Draw(BackgroundImage, Vector2.Zero, Color.White);
             spriteBatch.DrawString(SpriteFont, RulesModel.headerText, RulesModel.headertPosition, RulesModel.color);
             spriteBatch.DrawString(ButtonFont, RulesModel.rulesText, RulesModel.rulesPosition, RulesModel.color);
-            foreach (var button in RulesModel.Buttons)
+            foreach (var button in Buttons)
                 button.Draw(spriteBatch);
         }
-
     }
 }

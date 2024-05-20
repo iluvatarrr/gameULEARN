@@ -11,23 +11,15 @@ namespace rpgame2.View
 
         public ButtonModel ButtonModel { get; set; }
 
-        public Button(SpriteFont font, Vector2 position, string text)
+        public Button(SpriteFont font, ButtonModel buttonModel)
         {
             Font = font;
-            ButtonModel = new ButtonModel();
-            ButtonModel.Text = text;
-            ButtonModel.Position = position;
-            ButtonModel.Rectangle = new Rectangle((int)ButtonModel.Position.X, (int)ButtonModel.Position.Y, ButtonModel.Text.Length * 40, 48);
+            ButtonModel = buttonModel;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.DrawString(Font, ButtonModel.Text, ButtonModel.Position, ButtonModel.PenColor);
-        }
-
-        public void Update()
-        {
-            ButtonModel.Update();
         }
     }
 }

@@ -1,11 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using rpgame2.View;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace rpgame2.Model
 {
@@ -14,7 +8,7 @@ namespace rpgame2.Model
         public Vector2 Position;
         public readonly SpriteFont Font;
 
-        public ScoresCounter(SpriteFont font, Player player)
+        public ScoresCounter(SpriteFont font)
         {
             Font = font;
             Position = new Vector2(90, 0);

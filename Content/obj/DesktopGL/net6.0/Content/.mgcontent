@@ -19,6 +19,8 @@
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/LevelTexture/grassGrondRight.png</File>
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/LevelTexture/purpleCrystal.png</File>
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/mainFont.spritefont</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/Music/gameSound.mp3</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/Music/menuSound.mp3</File>
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/OrcAnimation/Attack_1.png</File>
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/OrcAnimation/Dead.png</File>
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/OrcAnimation/Idle.png</File>
@@ -33,6 +35,8 @@
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/ScoresCounterFont/ScoresConterFont.spritefont</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

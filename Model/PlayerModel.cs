@@ -1,15 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using rpgame2.Controller;
-using System;
-
 using rpgame2.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace rpgame2.Model
 {
@@ -26,27 +19,16 @@ namespace rpgame2.Model
         public Vector2 PositionBeforeJump = new Vector2(float.PositiveInfinity, float.PositiveInfinity);
         public AnimationController controller;
         public Dictionary<string, Animation> animations;
-        KeyboardState keyboardState;
-        public Vector2 Position = new Vector2(0, 380);
         public Vector2 TileOfPlayer;
         public Vector2 previousPositionOfPlayer;
         public static Node NodeOfPlayer;
 
-        private Input Input = new Input()
-        {
-            Up = Keys.W,
-            Left = Keys.A,
-            Right = Keys.D,
-            Fight = Keys.E,
-            Fight2 = Keys.F,
-            Fight3 = Keys.R,
-            Jump = Keys.Space,
-            None = Keys.None,
-        };
+        public static Vector2 PlayerStartPosition;
 
-        private void DeadInput()
+        public PlayerModel(Dictionary<string, Animation> currentAnimations)
         {
-            Input = new Input();
+            animations = currentAnimations;
+            controller = new AnimationController(animations.First().Value);
         }
 
         public void UpdatePositionController()
@@ -58,57 +40,26 @@ namespace rpgame2.Model
 
         public void AddKill() => Gems+=10;
 
-
-        public int HelpHitLogic(int damage)
-        {
-            if (controller.animation.FrameCount - 1 == controller.animation.CurrentFrame && controller.timer < 0.000001f)
-            {
-                isHit = true;
-                return damage;
-            }
-            else
-            {
-                isHit = false;
-                return 0;
-            }
-        }
-
-        public int HitLogic()
-        {
-            if (keyboardState.IsKeyDown(Input.Fight)) return HelpHitLogic(50);
-            if (keyboardState.IsKeyDown(Input.Fight2)) return HelpHitLogic(25);
-            if (keyboardState.IsKeyDown(Input.Fight3)) return HelpHitLogic(10);
-            else
-            {
-                isHit = false;
-                return 0;
-            }
-        }
-
         public void ChangeHealth()
         {
             if (Health < 1) IsDead = true;
             if (IsDead) Health = 0;
         }
-
-        private void Move()
+        public void MoveLeft() => Velocity.X = -Speed;
+        public void MoveRight() => Velocity.X = +Speed;
+        public void JumpMove()
         {
-            if (keyboardState.IsKeyDown(Input.Up)) Velocity.Y = -5*Speed;
-            else if (keyboardState.IsKeyDown(Input.Left)) Velocity.X = -Speed;
-            else if (keyboardState.IsKeyDown(Input.Right)) Velocity.X = Speed;
-            JumpLogic();
-        }
-
-        private void JumpLogic()
-        {
-                
-            if (keyboardState.IsKeyDown(Input.Jump) && onGravity == false)
+            if (onGravity == false && controller.timer < 0.000001f)
                 if (controller.timer < 0.000001f)
                 {
                     Position.Y -= Jump;
-                    Velocity.Y = -Jump/2;
+                    Velocity.Y = -Jump / 2;
                     onGravity = true;
                 }
+        }
+
+        private void GravityLogic()
+        {
             Velocity.Y += Gravity;
             if (onGravity == false)
             {
@@ -117,28 +68,12 @@ namespace rpgame2.Model
             }
         }
 
-        protected virtual void SetAnimation()
-        {
-            if (keyboardState.IsKeyDown(Input.Right)) controller.Play(animations["WalkRight"]);
-            else if (keyboardState.IsKeyDown(Input.Left)) controller.Play(animations["WalkLeft"]);
-
-            else if (keyboardState.IsKeyDown(Input.Up)) controller.Play(animations["WalkUp"]);
-            else if (keyboardState.IsKeyDown(Input.Fight)) controller.Play(animations["Fight"]);
-            else if (keyboardState.IsKeyDown(Input.Fight2)) controller.Play(animations["Fight2"]);
-            else if (keyboardState.IsKeyDown(Input.Fight3)) controller.Play(animations["Fight3"]);
-            else if (IsDead)
-            {
-                controller.Play(animations["death"]);
-                controller.animation.IsLooping = false;
-            }
-            else controller.Play(animations["None"]);
-        }
         private bool InNotMap()
         {
             return (Position.X < -RectangleHelper.marginBlockLeftRight
                     || Position.Y < -RectangleHelper.marginPlayerTop
-                    || Game1.Game1.ScreenWidth < Position.X
-                    || Game1.Game1.ScreenHeight < Position.Y);
+                    || MyGame.Game1.ScreenWidth < Position.X
+                    || MyGame.Game1.ScreenHeight < Position.Y);
         }
         public void FindTile()
         {
@@ -148,18 +83,13 @@ namespace rpgame2.Model
             else previousPositionOfPlayer = TileOfPlayer;
         }
 
-        public virtual void Update(GameTime gameTime)
+        public void Update()
         {
             if (InNotMap()) IsDead = true;
-            keyboardState = Input.GetState();
-            controller.Update(gameTime);
-            UpdatePositionController();
-            Move();
-            HitLogic();
-            SetAnimation();
+            ChangeHealth();
+            GravityLogic();
             Position += Velocity;
             Velocity = Vector2.Zero;
-            if (IsDead) DeadInput();
             Rectangle = new Rectangle((int)Position.X+ LevelModel.sizeOfElement / 2, (int)Position.Y, LevelModel.sizeOfElement , LevelModel.sizeOfElement);
             if ((Position.Y - PositionBeforeJump.Y) > (LevelModel.sizeOfElement * 2)) IsDead = true;
             FindTile();

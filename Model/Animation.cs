@@ -12,7 +12,6 @@ namespace rpgame2.Model
         public bool IsFinished { get; set; }
         public float FrameSpeed { get; set; }
         public Texture2D Texture { get; private set; }
-
         public Animation(Texture2D texture, int frameCount) 
         {
             Texture = texture;

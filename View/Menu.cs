@@ -1,4 +1,4 @@
-﻿using Game1;
+﻿using MyGame;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using rpgame2.Controller;
@@ -18,37 +18,25 @@ namespace rpgame2
 
         public ButtonController ButtonController { get; private set; }
         public MenuModel MenuModel { get; set; }
-        public Menu(Texture2D backgroundImage, SpriteFont spriteFont, SpriteFont buttonFont, Game game)
+        public List<Button> Buttons { get; private set; }
+
+        public Menu(Texture2D backgroundImage, SpriteFont spriteFont, SpriteFont buttonFont, MenuModel menuModel, Game game)
         {
-            MenuModel = new MenuModel();
+            MenuModel = menuModel;
+            Buttons = new List<Button>();
             ButtonController = new ButtonController(game);
             BackgroundImage = backgroundImage;
             SpriteFont = spriteFont;
             ButtonFont = buttonFont;
-            var PlayButton = new Button(ButtonFont, new Vector2(100, 460), "Play");
-            PlayButton.ButtonModel.Click += ButtonController.ChoiseButton;
-            var RulesButton = new Button(ButtonFont, new Vector2(100, 518), "Rules");
-            RulesButton.ButtonModel.Click += ButtonController.RulesButton;
-            var SettingsButton = new Button( ButtonFont, new Vector2(100, 576), "Settings");
-            SettingsButton.ButtonModel.Click += ButtonController.SettingsButton;
-            var ExitButton = new Button(ButtonFont, new Vector2(100, 634), "Exit");
-            ExitButton.ButtonModel.Click += ButtonController.ExitButton;
-            MenuModel.Buttons.Add(PlayButton);
-            MenuModel.Buttons.Add(RulesButton);
-            MenuModel.Buttons.Add(SettingsButton);
-            MenuModel.Buttons.Add(ExitButton);
-        }
-
-        public void Update()
-        {
-            MenuModel.Update();
+            foreach (var button in MenuModel.ButtonsController)
+                Buttons.Add(new Button(ButtonFont, button.ButtonModel));
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(BackgroundImage, Vector2.Zero, Color.White);
             spriteBatch.DrawString(SpriteFont, "Рудник", MenuModel.textPosition, MenuModel.color);
-            foreach (var button in MenuModel.Buttons)
+            foreach (var button in Buttons)
                 button.Draw(spriteBatch);
         }
     }

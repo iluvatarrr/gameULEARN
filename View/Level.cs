@@ -4,45 +4,25 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 using rpgame2.Model;
 using System;
+using rpgame2.View;
 
 namespace rpgame2
 {
     public class Level
     {
         public GameState GameState { get; private set; }
-        public LevelModel LevelModel { get; private set; }
+        public LevelModel LevelModel { get; set; }
         public Texture2D BackgroundImage { get; private set; }
-        public Texture2D GrassTexture { get; private set; }
-        public Texture2D DirthTexture { get; private set; }
-        public Texture2D GrassGrondLeft { get; private set; }
-        public Texture2D GrassGrondMiddle { get; private set; }
-        public Texture2D GrassGrondRight { get; private set; }
         public Texture2D Crystal { get; private set; }
-        public ScoresCounter ScoresConteter { get; private set; }
-        public Texture2D FinalStone { get; private set; }
-        public Texture2D FinalStoneOn { get; private set; }
+        public ScoresCounter ScoresConteter { get; set; }
 
-        public Level(Texture2D backgroundImage, LevelModel levelModel,
-            Texture2D grassTextre, Texture2D dirthTextre, Texture2D grassGrondLeft,
-            Texture2D grassGrondMiddle, Texture2D grassGrondRight, Texture2D crystal,
-            Texture2D finalStone, Texture2D finalStoneOn, ScoresCounter scoresConteter)
+        private Dictionary<string, Texture2D> LevelTexture;
+        public Player Player;
+        public List<Orc> OrcList;
+        public Level(Dictionary<string, Texture2D> levelTexture)
         {
-            BackgroundImage = backgroundImage;
-            LevelModel = levelModel;
-            GrassTexture = grassTextre;
-            DirthTexture = dirthTextre;
-            GrassGrondLeft = grassGrondLeft;
-            GrassGrondMiddle = grassGrondMiddle;
-            GrassGrondRight = grassGrondRight;
-            Crystal = crystal;
-            FinalStone = finalStone;
-            FinalStoneOn = finalStoneOn;
-            ScoresConteter = scoresConteter;
-        }
-
-        public void Update()
-        {
-            LevelModel.Update();
+            LevelTexture = levelTexture;
+            BackgroundImage = LevelTexture["levelBG"];
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -52,20 +32,23 @@ namespace rpgame2
             for (int x = 0; x < LevelModel.MapInform.CurrentMap.GetLength(0); x++)
                 for (int y = 0; y < LevelModel.MapInform.CurrentMap.GetLength(1); y++)
                 {
-                    if (LevelModel.MapInform.CurrentMap[x, y] == 0 || LevelModel.MapInform.CurrentMap[x, y] == 8) continue;
+                    if (LevelModel.MapInform.CurrentMap[x, y] == 0 || LevelModel.MapInform.CurrentMap[x, y] == 8 || LevelModel.MapInform.CurrentMap[x, y] == 11) continue;
                     var posX = y * LevelModel.sizeOfElement;
                     var posY = x * LevelModel.sizeOfElement;
-                    if (LevelModel.MapInform.CurrentMap[x, y] == 1) currentTexture = GrassTexture;
-                    else if (LevelModel.MapInform.CurrentMap[x, y] == 2) currentTexture = GrassGrondLeft;
-                    else if (LevelModel.MapInform.CurrentMap[x, y] == 3) currentTexture = GrassGrondMiddle;
-                    else if (LevelModel.MapInform.CurrentMap[x, y] == 4) currentTexture = GrassGrondRight;
-                    else if (LevelModel.MapInform.CurrentMap[x, y] == 5) currentTexture = Crystal;
-                    else if (LevelModel.MapInform.CurrentMap[x, y] == 6) currentTexture = FinalStone;
-                    else if (LevelModel.MapInform.CurrentMap[x, y] == 7) currentTexture = FinalStoneOn;
-                    else currentTexture = DirthTexture;
+                    if (LevelModel.MapInform.CurrentMap[x, y] == 1) currentTexture = LevelTexture["grass1"];
+                    else if (LevelModel.MapInform.CurrentMap[x, y] == 2) currentTexture = LevelTexture["grass2"];
+                    else if (LevelModel.MapInform.CurrentMap[x, y] == 3) currentTexture = LevelTexture["grass3"];
+                    else if (LevelModel.MapInform.CurrentMap[x, y] == 4) currentTexture = LevelTexture["grass4"];
+                    else if (LevelModel.MapInform.CurrentMap[x, y] == 5) currentTexture = LevelTexture["crystal"];
+                    else if (LevelModel.MapInform.CurrentMap[x, y] == 6) currentTexture = LevelTexture["finalStone"];
+                    else if (LevelModel.MapInform.CurrentMap[x, y] == 7) currentTexture = LevelTexture["finalStoneOn"];
+                    else currentTexture = LevelTexture["rassTexture"];
                     spriteBatch.Draw(currentTexture, new Vector2(posX, posY), Color.White);
                 }
             spriteBatch.DrawString(ScoresConteter.Font, "Score  :" + LevelModel.PlayerModel.Gems.ToString(), ScoresConteter.Position, Color.Gold);
+            foreach (var orc in OrcList)
+                orc.Draw(spriteBatch);
+            Player.Draw(spriteBatch);
         }
     }
 }

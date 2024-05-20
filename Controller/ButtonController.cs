@@ -1,11 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using rpgame2.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static rpgame2.Model.LevelState;
 
 namespace rpgame2.Controller
 {
@@ -19,20 +15,23 @@ namespace rpgame2.Controller
         public static void BackButton(object sender, EventArgs e) => GameState.NextState = GameState.PeviousState;
         public static void MenuButton(object sender, EventArgs e) => GameState.ChengeState(State.SplashScreen);
         public static void ChoiseButton(object sender, EventArgs e) => GameState.ChengeState(State.ChoiceLevel);
+        public static void MoreMusicButton(object sender, EventArgs e) => MusicValue.PlusMusic();
+        public static void LessMusicButton(object sender, EventArgs e) => MusicValue.MinusMusic();
+
         public static void FirstLevelButton(object sender, EventArgs e)
         {
             GameState.ChengeState(State.Game);
-            LevelState.ChengeState(LevelNumber.First);
+            LevelState.ChengeState(LevelStates.First);
         }
         public static void SecondLevelButton(object sender, EventArgs e)
         {
             GameState.ChengeState(State.Game);
-            LevelState.ChengeState(LevelNumber.Second);
+            LevelState.ChengeState(LevelStates.Second);
         }
         public static void ThirdLevelButton(object sender, EventArgs e)
         {
             GameState.ChengeState(State.Game);
-            LevelState.ChengeState(LevelNumber.Third);
+            LevelState.ChengeState(LevelStates.Third);
         }
         public static void ExitButton(object sender, EventArgs e) => Game.Exit();
     }

@@ -2,7 +2,8 @@
 using rpgame2.Controller;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-using rpgame2.Controller;
+using System.Collections.Generic;
+
 using rpgame2.Model;
 
 
@@ -15,35 +16,24 @@ namespace rpgame2.View
         public SpriteFont ButtonFont { get; private set; }
         public Texture2D ButtonTexture { get; private set; }
         public PauseModel PauseModel { get; private set; }
+        public List<Button> Buttons { get; private set; }
 
-        public Pause(Texture2D backgroundImage, SpriteFont spriteFont, SpriteFont buttonFont)
+        public Pause(Texture2D backgroundImage, SpriteFont spriteFont, SpriteFont buttonFont, PauseModel pauseModel)
         {
-            PauseModel = new PauseModel();
+            PauseModel = pauseModel;
+            Buttons = new List<Button>();
             BackgroundImage = backgroundImage;
             SpriteFont = spriteFont;
             ButtonFont = buttonFont;
-            var ChoiseButton = new Button( ButtonFont, new Vector2(100, 434), "Choise Level");
-            ChoiseButton.ButtonModel.Click += ButtonController.ChoiseButton;
-            var MenuButton = new Button( ButtonFont, new Vector2(100, 534), "Menu");
-            MenuButton.ButtonModel.Click += ButtonController.MenuButton;
-            var BackButton = new Button(ButtonFont, new Vector2(100, 634), "Back");
-            BackButton.ButtonModel.Click += ButtonController.BackButton;
-            PauseModel.Buttons.Add(MenuButton);
-            PauseModel.Buttons.Add(ChoiseButton);
-            PauseModel.Buttons.Add(BackButton);
-        }
-
-        public void Update()
-        {
-            foreach (var button in PauseModel.Buttons)
-                button.Update();
+            foreach (var button in PauseModel.ButtonsController) 
+                Buttons.Add(new Button(ButtonFont, button.ButtonModel));
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(BackgroundImage, Vector2.Zero, Color.White);
             spriteBatch.DrawString(SpriteFont, PauseModel.headerText, PauseModel.headertPosition, PauseModel.color);
-            foreach (var button in PauseModel.Buttons)
+            foreach (var button in Buttons)
                 button.Draw(spriteBatch);
         }
 

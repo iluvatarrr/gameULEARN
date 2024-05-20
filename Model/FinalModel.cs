@@ -7,8 +7,7 @@ namespace rpgame2.Model
 {
     public class FinalModel
     {
-        public List<Button> Buttons;
-        public ButtonController ButtonController { get; set; }
+        public List<BtnController> ButtonsController;
         public Color color { get; private set; }
         public string headerText { get; private set; }
         public Vector2 headertPosition { get; private set; }
@@ -17,12 +16,24 @@ namespace rpgame2.Model
 
         public FinalModel()
         {
-            Buttons = new List<Button>();
+            ButtonsController = new List<BtnController>();
             color = Color.White;
             headerText = "Final";
             rulesText = "Поздравляю, вы победили!\nСыграем еще уровень?)";
             headertPosition = new Vector2(50, -10);
             rulesPosition = new Vector2(50, 220);
+            var ChoiseButton = new BtnController(new ButtonModel(new Vector2(100, 534), "Choise Level"));
+            ChoiseButton.Click += ButtonController.ChoiseButton;
+            var MenuButton = new BtnController(new ButtonModel(new Vector2(100, 634), "Menu"));
+            MenuButton.Click += ButtonController.MenuButton;
+            ButtonsController.Add(ChoiseButton);
+            ButtonsController.Add(MenuButton);
+        }
+
+        public void Update()
+        {
+            foreach (var button in ButtonsController)
+                button.Update();
         }
     }
 }

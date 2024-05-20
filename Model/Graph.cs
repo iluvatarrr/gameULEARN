@@ -34,10 +34,12 @@ namespace rpgame2.Model
     {
         readonly List<Edge> edges = new List<Edge>();
         public Vector2 Position;
+        public int Weight;
         public Node Previous { get; set; }
-        public Node(Vector2 position)
+        public Node(Vector2 position, int weight)
         {
             Position = position;
+            Weight = weight;
         }
 
         public IEnumerable<Node> IncidentNodes

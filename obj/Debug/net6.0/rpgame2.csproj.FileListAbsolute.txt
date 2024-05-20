@@ -60,3 +60,7 @@ C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\Button\ButtonFont.xn
 C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\GameStateBG\PauseBackground.xnb
 C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\GameStateBG\Battleground3.xnb
 C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\GameStateBG\firstLevelBackground.xnb
+C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\Music\gameSound.ogg
+C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\Music\gameSound.xnb
+C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\Music\menuSound.ogg
+C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0\Content\Music\menuSound.xnb

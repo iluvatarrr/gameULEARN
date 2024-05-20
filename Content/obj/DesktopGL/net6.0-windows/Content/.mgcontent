@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Profile>Reach</Profile>
+  <Platform>DesktopGL</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/Button/ButtonFont.spritefont</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/GameStateBG/Battleground3.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/GameStateBG/firstLevelBackground.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/GameStateBG/PauseBackground.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/HeallthSubBur.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/lava_tile1.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/LevelTexture/dirth.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/LevelTexture/finalStone.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/LevelTexture/finalStoneOn.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/LevelTexture/grass.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/LevelTexture/grass1.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/LevelTexture/grass2.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/LevelTexture/grass3.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/LevelTexture/grass4.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/LevelTexture/grassGrondLeft.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/LevelTexture/grassGrondMIddle.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/LevelTexture/grassGrondRight.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/LevelTexture/purpleCrystal.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/mainFont.spritefont</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/Music/gameSound.mp3</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/Music/menuSound.mp3</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/OrcAnimation/Attack_1.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/OrcAnimation/Dead.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/OrcAnimation/Idle.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/OrcAnimation/Run.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/PlayerAnimation/Attack1.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/PlayerAnimation/Attack2.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/PlayerAnimation/Attack3.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/PlayerAnimation/Dead1.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/PlayerAnimation/Idle1.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/PlayerAnimation/Run1.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/PlayerAnimation/RunLeft1.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/ScoresCounterFont/ScoresConterFont.spritefont</File>
+  </SourceFiles>
+  <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>

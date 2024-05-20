@@ -3,14 +3,14 @@ using rpgame2.View;
 using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using MyGame;
 
 namespace rpgame2.Model
 {
     public class MenuModel
     {
 
-        public List<Button> Buttons;
-        public ButtonController ButtonController { get; set; }
+        public List<BtnController> ButtonsController;
         public Color color { get; private set; }
         public string rulesText { get; private set; }
         public string headerText { get; private set; }
@@ -20,10 +20,23 @@ namespace rpgame2.Model
         public Vector2 textPosition = new Vector2(100, 220);
         public MenuModel()
         {
-            Buttons = new List<Button>();
+            ButtonsController = new List<BtnController>();
             timeCounter = 0;
             headerText = "Рудник";
             headerPosition = new Vector2(100, 220);
+
+            var PlayButton = new BtnController(new ButtonModel(new Vector2(100, 460), "Play"));
+            PlayButton.Click += ButtonController.ChoiseButton;
+            var RulesButton = new BtnController(new ButtonModel(new Vector2(100, 518), "Rules"));
+            RulesButton.Click += ButtonController.RulesButton;
+            var SettingsButton = new BtnController(new ButtonModel(new Vector2(100, 576), "Settings"));
+            SettingsButton.Click += ButtonController.SettingsButton;
+            var ExitButton = new BtnController(new ButtonModel(new Vector2(100, 634), "Exit"));
+            ExitButton.Click += ButtonController.ExitButton;
+            ButtonsController.Add(PlayButton);
+            ButtonsController.Add(RulesButton);
+            ButtonsController.Add(SettingsButton);
+            ButtonsController.Add(ExitButton);
         }
         public void Update()
         {
@@ -33,7 +46,7 @@ namespace rpgame2.Model
                 timeCounter += 4;
             }
             else color = Color.White;
-            foreach (var button in Buttons)
+            foreach (var button in ButtonsController)
                 button.Update();
         }
     }
