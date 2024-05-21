@@ -92,10 +92,8 @@ namespace MyGame
             };
             animationOrcDictionary = new Dictionary<string, Animation>()
             {
-                { "WalkUp", new Animation(Content.Load<Texture2D>("OrcAnimation\\Run"), 6) },
-                { "WalkDown", new Animation(Content.Load<Texture2D>("OrcAnimation\\Run"),6) },
-                { "WalkLeft", new Animation(Content.Load<Texture2D>("OrcAnimation\\Run"), 6) },
-                { "WalkRight", new Animation(Content.Load<Texture2D>("OrcAnimation\\Run"), 6) },
+                { "Walk", new Animation(Content.Load<Texture2D>("OrcAnimation\\Run"), 6) },
+                { "WalkLeft", new Animation(Content.Load<Texture2D>("OrcAnimation\\RunLeft"), 6) },
                 { "None", new Animation(Content.Load<Texture2D>("OrcAnimation\\Idle"), 5) },
                 { "Fight", new Animation(Content.Load<Texture2D>("OrcAnimation\\Attack_1"), 4) },
                 { "death", new Animation(Content.Load<Texture2D>("OrcAnimation\\Dead"), 4) },

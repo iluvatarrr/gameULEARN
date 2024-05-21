@@ -40,8 +40,7 @@ namespace rpgame2.Controller
                 Game.PlayerController.Update(gameTime);
                 Game.Level.LevelModel.Update();
                 foreach (var orcController in Game.OrcController)
-                    if (!orcController.OrcModel.mayDelite)
-                        orcController.Update(gameTime);
+                    orcController.Update(gameTime);
             } else Game.MusicValue.ChangeSong(Game.MenuMusic);
         }
 

@@ -68,3 +68,4 @@ C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0-windows\Content\LevelTexture
 C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0-windows\Content\LevelTexture\grass2.xnb
 C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0-windows\Content\LevelTexture\grass3.xnb
 C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0-windows\Content\LevelTexture\grass4.xnb
+C:\Users\Dima\Desktop\game\rpgame2\bin\Debug\net6.0-windows\Content\OrcAnimation\RunLeft.xnb

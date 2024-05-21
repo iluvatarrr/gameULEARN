@@ -20,5 +20,14 @@ namespace rpgame2.Model
             IsFinished = false;
             FrameSpeed = 0.1f;
         }
+        public Animation(Animation animation)
+        {
+            Texture = animation.Texture;
+            FrameCount = animation.FrameCount;
+            IsLooping = animation.IsLooping;
+            IsFinished = animation.IsFinished;
+            FrameSpeed = animation.FrameSpeed;
+            CurrentFrame = animation.CurrentFrame;
+        }
     }
 }

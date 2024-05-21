@@ -29,6 +29,7 @@
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/OrcAnimation/Dead.png</File>
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/OrcAnimation/Idle.png</File>
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/OrcAnimation/Run.png</File>
+    <File>C:/Users/Dima/Desktop/game/rpgame2/Content/OrcAnimation/RunLeft.png</File>
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/PlayerAnimation/Attack1.png</File>
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/PlayerAnimation/Attack2.png</File>
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/PlayerAnimation/Attack3.png</File>
@@ -39,6 +40,7 @@
     <File>C:/Users/Dima/Desktop/game/rpgame2/Content/ScoresCounterFont/ScoresConterFont.spritefont</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

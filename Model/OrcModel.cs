@@ -10,6 +10,7 @@ namespace rpgame2.Model
     {
         Stay,
         Run,
+        RunLeft,
         Hit,
         Dead,
         Jump,
@@ -21,13 +22,17 @@ namespace rpgame2.Model
         public int Health = 50;
         public bool onGravity = true;
         public bool isHit = false;
+        public bool canHit = false;
+        public float Gravity = 2f;
         public int Strange = 1;
         public float Jump = 100f;
-        public float JumpHorizontal = 145f;
-        public IEnumerable<Node> way;
+        public float JumpHorizontal = 116f;
         public IEnumerable<Rectangle> currentBlock;
         public Vector2 LastTile;
         public Vector2 TileOfOrc;
+        public Vector2 PreviousGloalTileOfOrc;
+        public Vector2 PreviousTileOfOrc;
+        public Vector2 GloalTileOfOrc;
         public Vector2 previousPositionOfOrc;
         public Node NodeOfOrc;
         public List<Node> currentWay;
@@ -40,9 +45,9 @@ namespace rpgame2.Model
         }
         public void MoveLeft() => Velocity.X = -Speed;
         public void MoveRight() => Velocity.X = +Speed;
-        public void MoveDown() => Position.Y += Speed / 80;
+        public void MoveDown() => Position.Y += Speed / 40;
         public void MoveDownDown() => Position.Y += Speed / 2;
-        public void JumpToUp() => Position.Y -= Jump / 7;
+        public void JumpToUp() => Position.Y -= Jump / 2;
 
         private void JumpLogic()
         {
@@ -53,37 +58,18 @@ namespace rpgame2.Model
         public void ChangeHealth()
         {
             if (Health < 1)
-            {
-                OrcState = OrcState.Dead;
                 IsDead = true;
-            }
             if (IsDead)
-            {
-                OrcState = OrcState.Dead;
                 Health = 0;
-            }
         }
 
         public void FindTile()
         {
-            //if (TileOfOrc != null)
-            //    LastTile = TileOfOrc;
-            //TileOfOrc = new Vector2((float)Math.Round((double)Rectangle.Left / LevelModel.sizeOfElement),
-            //    (float)Math.Round((double)(Rectangle.Bottom - 5) / LevelModel.sizeOfElement));
-
-            currentBlock = MapInfo.Blocks.Where(platform => Rectangle.OnPlatform(platform));
-            if (currentBlock.Count() > 0)
-            {
-                TileOfOrc = new Vector2((float)Math.Round((double)currentBlock.First().X / LevelModel.sizeOfElement),
-                     (float)Math.Round((double)currentBlock.First().Y / LevelModel.sizeOfElement));
-            }
-            //else
-            //{
-            //    TileOfOrc = new Vector2((float)Math.Round((double)Rectangle.Left / LevelModel.sizeOfElement),
-            //        (float)Math.Round((double)(Rectangle.Bottom - 5) / LevelModel.sizeOfElement));
-            //}
-            if (/*LastTile != null && */MapInfo.Graph.IsNewPosition(TileOfOrc) /*&& LastTile.Y - TileOfOrc.Y > 2*/) TileOfOrc = previousPositionOfOrc;
+            TileOfOrc = new Vector2((float)Math.Round((double)Rectangle.X / LevelModel.sizeOfElement),
+                (float)Math.Round((double)(Rectangle.Bottom) / LevelModel.sizeOfElement));
+            if (MapInfo.Graph.IsNewPosition(TileOfOrc)) TileOfOrc = previousPositionOfOrc;
             else previousPositionOfOrc = TileOfOrc;
+
         }
 
         public void StayInMap()
@@ -99,7 +85,7 @@ namespace rpgame2.Model
             Position += Velocity;
             Velocity = Vector2.Zero;
             ChangeHealth();
-            Rectangle = new Rectangle((int)Position.X+LevelModel.sizeOfElement/2, (int)Position.Y+LevelModel.sizeOfElement, LevelModel.sizeOfElement, LevelModel.sizeOfElement);
+            Rectangle = new Rectangle((int)Position.X, (int)Position.Y+LevelModel.sizeOfElement, LevelModel.sizeOfElement, LevelModel.sizeOfElement);
             FindTile();
         }
     }

@@ -11,7 +11,7 @@ namespace rpgame2.Model
     {
         public readonly static int marginBlockLeftRight = 40;
         public readonly static int marginPlayerTop = 90;
-        public static int marginFromTop = 5;
+        public static int marginFromTop = 3;
 
         public static bool OnPlatform(this Rectangle r1, Rectangle r2)
         {
@@ -68,11 +68,10 @@ namespace rpgame2.Model
                 }
                 if ((orc.TileOfOrc.Equals(PlayerModel.TileOfPlayer) && orc.Rectangle.Intersects(PlayerModel.Rectangle)) && !PlayerModel.IsDead && !orc.IsDead)
                 {
-                    orc.OrcState = OrcState.Hit;
+                    orc.canHit = true;
                     if (orc.isHit)
                         PlayerModel.Health -= orc.Strange;
                 }
-                else if (!orc.IsDead) orc.OrcState = OrcState.Stay;
             }
         }
 
@@ -85,11 +84,8 @@ namespace rpgame2.Model
                         if (MapInform.CurrentMap[y, x] == 11) PlayerModel.PlayerStartPosition = new Vector2(x * sizeOfElement, y * sizeOfElement-RectangleHelper.marginFromTop);
                         else if (MapInform.CurrentMap[y, x] == 8) PositionOrcList.Add(new Vector2(x * sizeOfElement, y * sizeOfElement-sizeOfElement-RectangleHelper.marginFromTop));
                         else if (MapInform.CurrentMap[y, x] == 5) MapInform.Crystal.Add(new Rectangle(x * sizeOfElement, y * sizeOfElement, sizeOfElement, sizeOfElement));
-                        else
-                        {
-                            if (MapInform.CurrentMap[y, x] == 6) PositionOfPortal = new Vector2(x, y);
-                            MapInfo.Blocks.Add(new Rectangle(x * sizeOfElement, y * sizeOfElement, sizeOfElement, sizeOfElement));
-                        }
+                        else if (MapInform.CurrentMap[y, x] == 6) PositionOfPortal = new Vector2(x, y);
+                        else MapInfo.Blocks.Add(new Rectangle(x * sizeOfElement, y * sizeOfElement, sizeOfElement, sizeOfElement));
                     }
         }
 
