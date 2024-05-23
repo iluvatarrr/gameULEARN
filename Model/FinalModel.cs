@@ -23,9 +23,9 @@ namespace rpgame2.Model
             headertPosition = new Vector2(50, -10);
             rulesPosition = new Vector2(50, 220);
             var ChoiseButton = new BtnController(new ButtonModel(new Vector2(100, 534), "Choise Level"));
-            ChoiseButton.Click += ButtonController.ChoiseButton;
+            ChoiseButton.Click += ButtonFunction.ChoiseButton;
             var MenuButton = new BtnController(new ButtonModel(new Vector2(100, 634), "Menu"));
-            MenuButton.Click += ButtonController.MenuButton;
+            MenuButton.Click += ButtonFunction.MenuButton;
             ButtonsController.Add(ChoiseButton);
             ButtonsController.Add(MenuButton);
         }

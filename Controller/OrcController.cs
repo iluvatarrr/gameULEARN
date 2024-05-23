@@ -71,6 +71,7 @@ namespace rpgame2.Controller
                 OrcModel.JumpUp();
             }
         }
+        
         public void SetState()
         {
             if (OrcModel.Velocity.X == 3 && !OrcModel.canHit) OrcModel.OrcState = OrcState.Run;

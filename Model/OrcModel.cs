@@ -18,15 +18,15 @@ namespace rpgame2.Model
 
     public class OrcModel : Mob
     {
-        public OrcState OrcState = OrcState.Stay;
-        public int Health = 50;
-        public bool onGravity = true;
-        public bool isHit = false;
-        public bool canHit = false;
-        public float Gravity = 2f;
-        public int Strange = 1;
-        public float Jump = 100f;
-        public float JumpHorizontal = 116f;
+        public OrcState OrcState;
+        public int Health;
+        public bool onGravity;
+        public bool isHit;
+        public bool canHit;
+        public float Gravity;
+        public int Strange;
+        public float Jump;
+        public float JumpHorizontal;
         public IEnumerable<Rectangle> currentBlock;
         public Vector2 LastTile;
         public Vector2 TileOfOrc;
@@ -38,11 +38,25 @@ namespace rpgame2.Model
         public List<Node> currentWay;
         public bool mayDelite = false;
 
+        public OrcModel()
+        {
+            OrcState = OrcState.Stay;
+            Health = 50;
+            onGravity = true;
+            isHit = false;
+            canHit = false;
+            Gravity = 2f;
+            Strange = 1;
+            Jump = 100f;
+            JumpHorizontal = 116f;
+        }
+
         public void JumpUp()
         {
             Position.Y -= JumpHorizontal;
             Velocity.Y += JumpHorizontal;
         }
+
         public void MoveLeft() => Velocity.X = -Speed;
         public void MoveRight() => Velocity.X = +Speed;
         public void MoveDown() => Position.Y += Speed / 40;

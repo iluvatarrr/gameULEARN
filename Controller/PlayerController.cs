@@ -31,7 +31,7 @@ namespace rpgame2.Controller
 
         private Input Input = new Input()
         {
-            Up = Keys.W,
+            //Up = Keys.W,
             Left = Keys.A,
             Right = Keys.D,
             Fight = Keys.E,
@@ -56,7 +56,7 @@ namespace rpgame2.Controller
             if (keyboardState.IsKeyDown(Input.Right)) controller.Play(animations["WalkRight"]);
             else if (keyboardState.IsKeyDown(Input.Left)) controller.Play(animations["WalkLeft"]);
 
-            else if (keyboardState.IsKeyDown(Input.Up)) controller.Play(animations["WalkUp"]);
+            //else if (keyboardState.IsKeyDown(Input.Up)) controller.Play(animations["WalkUp"]);
             else if (keyboardState.IsKeyDown(Input.Fight)) controller.Play(animations["Fight"]);
             else if (keyboardState.IsKeyDown(Input.Fight2)) controller.Play(animations["Fight2"]);
             else if (keyboardState.IsKeyDown(Input.Fight3)) controller.Play(animations["Fight3"]);
@@ -82,14 +82,20 @@ namespace rpgame2.Controller
         }
         private void Move()
         {
-            if (keyboardState.IsKeyDown(Input.Up)) PlayerModel.Velocity.Y = -5 * PlayerModel.Speed;
-            else if (keyboardState.IsKeyDown(Input.Left)) PlayerModel.MoveLeft();
+            //if (keyboardState.IsKeyDown(Input.Up)) PlayerModel.Velocity.Y = -5 * PlayerModel.Speed;
+            if (keyboardState.IsKeyDown(Input.Left)) PlayerModel.MoveLeft();
             else if (keyboardState.IsKeyDown(Input.Right)) PlayerModel.MoveRight();
             JumpLogic();
         }
+        public void JumpMove()
+        {
+            if (controller.timer < 0.000001f)
+                PlayerModel.JumpMove();
+        }
+
         private void JumpLogic()
         {
-            if (keyboardState.IsKeyDown(Input.Jump)) PlayerModel.JumpMove();
+            if (keyboardState.IsKeyDown(Input.Jump)) JumpMove();
         }
         public int HitLogic()
         {

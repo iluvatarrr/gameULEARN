@@ -22,13 +22,13 @@ namespace rpgame2.Model
             headertPosition = new Vector2(20, -10);
             rulesPosition = new Vector2(20, 250);
             var MoreButton = new BtnController(new ButtonModel(new Vector2(800, 250), "+"));
-            MoreButton.Click += ButtonController.MoreMusicButton;
+            MoreButton.Click += ButtonFunction.MoreMusicButton;
             ButtonsController.Add(MoreButton);
             var LessButton = new BtnController(new ButtonModel(new Vector2(950, 250), "-"));
-            LessButton.Click += ButtonController.LessMusicButton;
+            LessButton.Click += ButtonFunction.LessMusicButton;
             ButtonsController.Add(LessButton);
             var BackButton = new BtnController(new ButtonModel(new Vector2(100, 634), "Back"));
-            BackButton.Click += ButtonController.BackButton;
+            BackButton.Click += ButtonFunction.BackButton;
             ButtonsController.Add(BackButton);
         }
 

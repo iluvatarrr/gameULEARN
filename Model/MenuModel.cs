@@ -26,13 +26,13 @@ namespace rpgame2.Model
             headerPosition = new Vector2(100, 220);
 
             var PlayButton = new BtnController(new ButtonModel(new Vector2(100, 460), "Play"));
-            PlayButton.Click += ButtonController.ChoiseButton;
+            PlayButton.Click += ButtonFunction.ChoiseButton;
             var RulesButton = new BtnController(new ButtonModel(new Vector2(100, 518), "Rules"));
-            RulesButton.Click += ButtonController.RulesButton;
+            RulesButton.Click += ButtonFunction.RulesButton;
             var SettingsButton = new BtnController(new ButtonModel(new Vector2(100, 576), "Settings"));
-            SettingsButton.Click += ButtonController.SettingsButton;
+            SettingsButton.Click += ButtonFunction.SettingsButton;
             var ExitButton = new BtnController(new ButtonModel(new Vector2(100, 634), "Exit"));
-            ExitButton.Click += ButtonController.ExitButton;
+            ExitButton.Click += ButtonFunction.ExitButton;
             ButtonsController.Add(PlayButton);
             ButtonsController.Add(RulesButton);
             ButtonsController.Add(SettingsButton);

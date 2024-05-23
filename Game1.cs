@@ -23,8 +23,8 @@ namespace MyGame
         public List<OrcController> OrcController { get; set; }
         public DrawGame DrawGame { get; private set; }
 
-        public static int ScreenWidth = 1280;
-        public static int ScreenHeight = 720;
+        public static int ScreenWidth;
+        public static int ScreenHeight;
         public GameStateController GameStateController;
         public Menu Menu;
         public Rules Rules;
@@ -46,6 +46,8 @@ namespace MyGame
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
+            ScreenWidth = 1280;
+            ScreenHeight = 720;
             Content.RootDirectory = "Content";
             graphics.PreferredBackBufferWidth = ScreenWidth;
             graphics.PreferredBackBufferHeight = ScreenHeight;

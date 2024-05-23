@@ -21,11 +21,11 @@ namespace rpgame2.Model
             headertPosition = new Vector2(50, -10);
             rulesPosition = new Vector2(50, 220);
             var ChoiseButton = new BtnController(new ButtonModel(new Vector2(100, 434), "Choise Level"));
-            ChoiseButton.Click += ButtonController.ChoiseButton;
+            ChoiseButton.Click += ButtonFunction.ChoiseButton;
             var MenuButton = new BtnController(new ButtonModel(new Vector2(100, 534), "Menu"));
-            MenuButton.Click += ButtonController.MenuButton;
+            MenuButton.Click += ButtonFunction.MenuButton;
             var BackButton = new BtnController(new ButtonModel(new Vector2(100, 634), "Back"));
-            BackButton.Click += ButtonController.BackButton;
+            BackButton.Click += ButtonFunction.BackButton;
             ButtonsController.Add(MenuButton);
             ButtonsController.Add(ChoiseButton);
             ButtonsController.Add(BackButton);

@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Drawing;
 using System.Linq;
-using Microsoft.VisualBasic;
 using Microsoft.Xna.Framework;
 
 
@@ -16,7 +14,7 @@ namespace rpgame2.Model
         public int Cost { get; set; }
         public Vector2 Position { get; set; }
         public int PathLengthFromStart { get; set; }
-        public StarData NodeFrom { get; set; }
+        public StarData PrewiousNode { get; set; }
         public int HeuristicOfChebishevPathLength { get; set; }
         public int EstimateFullPathLength
         {
@@ -33,26 +31,22 @@ namespace rpgame2.Model
         {
             var visitedNodes = new Collection<StarData>();
             var openNodes = new Collection<StarData>();
-
             var startNode = new StarData()
             {
                 CurrentNode = start,
                 Position = start.Position,
                 Cost = start.Weight,
-                NodeFrom = null,
+                PrewiousNode = null,
                 PathLengthFromStart = 0,
                 HeuristicOfChebishevPathLength = GetHeuristicPathLength(start.Position, end.Position)
             };
-
             openNodes.Add(startNode);
             while (openNodes.Count > 0)
             {
                 var currentNode = openNodes.OrderBy(node => node.EstimateFullPathLength).First();
                 if (currentNode.Position == end.Position) return GetWay(currentNode);
-
                 visitedNodes.Add(currentNode);
                 openNodes.Remove(currentNode);
-
                 foreach (var incidentNode in MakeIncidentNodes(currentNode.CurrentNode.IncidentNodes, currentNode, end))
                 {
                     if (visitedNodes.Count(node => node.Position == incidentNode.Position) > 0) continue;
@@ -61,7 +55,7 @@ namespace rpgame2.Model
                     else
                         if (openNode.Cost > incidentNode.Cost)
                         {
-                            openNode.NodeFrom = currentNode;
+                            openNode.PrewiousNode = currentNode;
                             openNode.PathLengthFromStart = incidentNode.PathLengthFromStart;
                             openNode.Cost = incidentNode.Cost;
                             openNode.HeuristicOfChebishevPathLength = incidentNode.HeuristicOfChebishevPathLength;
@@ -81,7 +75,7 @@ namespace rpgame2.Model
                     CurrentNode = node,
                     Position = node.Position,
                     Cost = node.Weight + fromNode.Cost,
-                    NodeFrom = fromNode,
+                    PrewiousNode = fromNode,
                     PathLengthFromStart = fromNode.PathLengthFromStart + 1,
                     HeuristicOfChebishevPathLength = GetHeuristicPathLength(node.Position, goal.Position),
                 });
@@ -96,7 +90,7 @@ namespace rpgame2.Model
             while (currentPathNode != null)
             {
                 result.Add(currentPathNode.CurrentNode);
-                currentPathNode = currentPathNode.NodeFrom;
+                currentPathNode = currentPathNode.PrewiousNode;
             }
             result.Reverse();
             return result;

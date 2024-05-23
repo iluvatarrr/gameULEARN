@@ -26,7 +26,7 @@ namespace rpgame2.Model
             rulesPosition = new Vector2(20, 220);
 
             var BackButton = new BtnController(new ButtonModel(new Vector2(100, 634), "Back"));
-            BackButton.Click += ButtonController.BackButton;
+            BackButton.Click += ButtonFunction.BackButton;
             ButtonsController.Add(BackButton);
         }
 

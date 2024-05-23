@@ -8,17 +8,15 @@ namespace rpgame2.Model
 {
     public class PlayerModel : Mob
     {
-        public float Speed = 3f;
-        public float Jump = 90f;
-        public float Gravity = 3f;
-        public bool onGravity = true;
-        public int Health = 100;
+        public float Speed;
+        public float Jump;
+        public float Gravity;
+        public bool onGravity;
+        public int Health;
         public int Gems;
-        public int Strange = 10;
-        public bool isHit = false;
-        public Vector2 PositionBeforeJump = new Vector2(float.PositiveInfinity, float.PositiveInfinity);
-        public AnimationController controller;
-        public Dictionary<string, Animation> animations;
+        public int Strange;
+        public bool isHitж;
+        public Vector2 PositionBeforeJump;
         public Vector2 TileOfPlayer;
         public Vector2 previousPositionOfPlayer;
         public static Node NodeOfPlayer;
@@ -27,13 +25,14 @@ namespace rpgame2.Model
 
         public PlayerModel(Dictionary<string, Animation> currentAnimations)
         {
-            animations = currentAnimations;
-            controller = new AnimationController(animations.First().Value);
-        }
-
-        public void UpdatePositionController()
-        {
-            if (controller != null) controller.Position = Position;
+            Speed = 3f;
+            Jump = 90f;
+            Gravity = 3f;
+            onGravity = true;
+            Health = 100;
+            Strange = 10;
+            isHit = false;
+            PositionBeforeJump = new Vector2(float.PositiveInfinity, float.PositiveInfinity);
         }
 
         public void AddGem() => Gems++;
@@ -49,13 +48,12 @@ namespace rpgame2.Model
         public void MoveRight() => Velocity.X = +Speed;
         public void JumpMove()
         {
-            if (onGravity == false && controller.timer < 0.000001f)
-                if (controller.timer < 0.000001f)
-                {
-                    Position.Y -= Jump;
-                    Velocity.Y = -Jump / 2;
-                    onGravity = true;
-                }
+            if (onGravity == false)
+            {
+                Position.Y -= Jump;
+                Velocity.Y = -Jump / 2;
+                onGravity = true;
+            }
         }
 
         private void GravityLogic()
