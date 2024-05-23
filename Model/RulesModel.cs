@@ -20,8 +20,9 @@ namespace rpgame2.Model
             ButtonsController = new List<BtnController>();
             color = Color.White;
             headerText = "Rules";
-            rulesText = "Вы попадаете на рудник, где обитают орки.\nВаща цель набрать большее количество\nочков и активировать портал.\n" +
-                "Управление:\nвлево/вправо - A/D, прыжок - Spase\nСильный удар - E, обычный - F, слабый - R";
+            rulesText = "Вы попадаете на рудник, где обитают орки.\nВаща цель набрать большее количество\nочков и активировать портал." +
+                "Управление:\nвлево/вправо - A/D, прыжок - Spase\nСильный удар - E, обычный - F, слабый - R" + 
+                "\nОрки любят темные пути. Двигаются по A*";
             headertPosition = new Vector2(20, -10);
             rulesPosition = new Vector2(20, 220);
 
