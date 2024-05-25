@@ -10,21 +10,21 @@ namespace rpgame2.Model
     public class MenuModel
     {
 
-        public List<BtnController> ButtonsController;
+        public List<BtnController> ButtonsController { get; private set; }
         public Color color { get; private set; }
         public string rulesText { get; private set; }
         public string headerText { get; private set; }
 
         public Vector2 headerPosition { get; private set; }
-        public int timeCounter { get; set; }
-        public Vector2 textPosition = new Vector2(100, 220);
+        public int timeCounter { get; private set; }
+        public Vector2 textPosition { get; private set; }
         public MenuModel()
         {
             ButtonsController = new List<BtnController>();
             timeCounter = 0;
             headerText = "Рудник";
             headerPosition = new Vector2(100, 220);
-
+            textPosition = new Vector2(100, 220);
             var PlayButton = new BtnController(new ButtonModel(new Vector2(100, 460), "Play"));
             PlayButton.Click += ButtonFunction.ChoiseButton;
             var RulesButton = new BtnController(new ButtonModel(new Vector2(100, 518), "Rules"));

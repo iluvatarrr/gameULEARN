@@ -11,10 +11,9 @@ namespace rpgame2.View
 {
     public class Player
     {
-        protected Texture2D texture;
-        public Texture2D TextureHealth;
-        public Texture2D HealthBarTexture;
-        PlayerController PlayerController;
+        private Texture2D TextureHealth;
+        private Texture2D HealthBarTexture;
+        private PlayerController PlayerController;
 
         public Player(Texture2D textureHealth, Texture2D healthBarTexture, PlayerController playerController)
         {

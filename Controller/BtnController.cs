@@ -7,8 +7,8 @@ namespace rpgame2.Controller
 {
     public class BtnController
     {
-        public ButtonModel ButtonModel;
-        public MouseState CurrentMouse;
+        public ButtonModel ButtonModel { get; private set; }
+        public MouseState CurrentMouse { get; private set; }
         public event EventHandler Click;
         public MouseState PreviousMouse { get; private set; }
 

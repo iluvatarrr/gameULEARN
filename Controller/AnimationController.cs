@@ -6,7 +6,7 @@ namespace rpgame2.View
 {
     public class AnimationController
     {
-        public Animation animation;
+        public Animation animation { get; private set; }
         public float timer { get; private set; }
         public Vector2 Position { get; set; }
 

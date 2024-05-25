@@ -19,8 +19,8 @@ namespace MyGame
         public GameController GameController { get; private set; }
         public LevelStateController LevelStateController { get; private set; }
         public static List<BtnController> ButtonController { get; private set; }
-        public PlayerController PlayerController { get; set; }
-        public List<OrcController> OrcController { get; set; }
+        public PlayerController PlayerController;
+        public List<OrcController> OrcController;
         public DrawGame DrawGame { get; private set; }
 
         public static int ScreenWidth;

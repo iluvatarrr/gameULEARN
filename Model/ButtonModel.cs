@@ -1,24 +1,13 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework;
-using System;
-
+﻿using Microsoft.Xna.Framework;
 
 namespace rpgame2.Model
 {
     public class ButtonModel
     {
-        public MouseState CurrentMouse;
 
-        public bool IsHovering;
-
-        public MouseState PreviousMouse { get; private set; }
-        //public bool CanUse;
+        public bool IsHovering { get; set; }
         public int timeCounter { get; set; }
         public Color PenColor { get; set; }
-        public bool Clicked { get; private set; }
-
-        public event EventHandler Click;
         public Color PenColour { get; set; }
         public Vector2 Position { get; set; }
         public Rectangle Rectangle { get; set; }

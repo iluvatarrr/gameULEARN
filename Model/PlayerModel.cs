@@ -1,12 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
-using rpgame2.View;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace rpgame2.Model
 {
-    public class PlayerModel : Mob
+    public class PlayerModel
     {
         public float Speed;
         public float Jump;
@@ -20,10 +18,15 @@ namespace rpgame2.Model
         public Vector2 TileOfPlayer;
         public Vector2 previousPositionOfPlayer;
         public static Node NodeOfPlayer;
-
         public static Vector2 PlayerStartPosition;
+        public Vector2 Position;
+        public Vector2 Velocity;
+        public bool hasJump;
+        public bool IsDead;
+        public bool isHit;
+        public Rectangle Rectangle;
 
-        public PlayerModel(Dictionary<string, Animation> currentAnimations)
+        public PlayerModel()
         {
             Speed = 3f;
             Jump = 90f;
@@ -31,6 +34,9 @@ namespace rpgame2.Model
             onGravity = true;
             Health = 100;
             Strange = 10;
+            isHit = false;
+            hasJump = true;
+            IsDead = false;
             isHit = false;
             PositionBeforeJump = new Vector2(float.PositiveInfinity, float.PositiveInfinity);
         }

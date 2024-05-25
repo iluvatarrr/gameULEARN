@@ -9,7 +9,7 @@ namespace rpgame2.View
 
         public SpriteFont Font;
 
-        public ButtonModel ButtonModel { get; set; }
+        public ButtonModel ButtonModel { get; private set; }
 
         public Button(SpriteFont font, ButtonModel buttonModel)
         {

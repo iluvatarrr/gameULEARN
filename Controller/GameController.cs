@@ -4,7 +4,6 @@ using MyGame;
 using rpgame2.Model;
 using rpgame2.View;
 using System.Collections.Generic;
-using System.Numerics;
 
 namespace rpgame2.Controller
 {
@@ -49,7 +48,7 @@ namespace rpgame2.Controller
             Game.Level = new Level(LevelTexture);
             Game.Level.ScoresConteter = new ScoresCounter(LevelFont["scoreFont"]);
             Game.Level.LevelModel = new LevelModel();
-            Game.Level.LevelModel.PlayerModel = new PlayerModel(Game.animationDictionary);
+            Game.Level.LevelModel.PlayerModel = new PlayerModel();
             Game.PlayerController = new PlayerController(Game.Level.LevelModel.PlayerModel, Game.animationDictionary);
             Game.OrcController = new List<OrcController>();
             Game.Level.Player = new Player(LevelTexture["healthTexture"], LevelTexture["healthBarTexture"], Game.PlayerController);

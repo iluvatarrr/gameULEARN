@@ -10,19 +10,13 @@ namespace rpgame2.Model
 
     public class StarData
     {
+        public StarData PrewiousNode { get; set; }
         public Node CurrentNode { get; set; }
         public int Cost { get; set; }
         public Vector2 Position { get; set; }
         public int PathLengthFromStart { get; set; }
-        public StarData PrewiousNode { get; set; }
         public int HeuristicOfChebishevPathLength { get; set; }
-        public int EstimateFullPathLength
-        {
-            get
-            {
-                return this.PathLengthFromStart + Cost + HeuristicOfChebishevPathLength;
-            }
-        }
+        public int CostFullWay { get { return this.PathLengthFromStart + Cost + HeuristicOfChebishevPathLength; } }
     }
 
     public class aStar
@@ -34,16 +28,16 @@ namespace rpgame2.Model
             var startNode = new StarData()
             {
                 CurrentNode = start,
-                Position = start.Position,
-                Cost = start.Weight,
                 PrewiousNode = null,
                 PathLengthFromStart = 0,
+                Position = start.Position,
+                Cost = start.Weight,
                 HeuristicOfChebishevPathLength = GetHeuristicPathLength(start.Position, end.Position)
             };
             openNodes.Add(startNode);
             while (openNodes.Count > 0)
             {
-                var currentNode = openNodes.OrderBy(node => node.EstimateFullPathLength).First();
+                var currentNode = openNodes.OrderBy(node => node.CostFullWay).First();
                 if (currentNode.Position == end.Position) return GetWay(currentNode);
                 visitedNodes.Add(currentNode);
                 openNodes.Remove(currentNode);
@@ -74,9 +68,9 @@ namespace rpgame2.Model
                 {
                     CurrentNode = node,
                     Position = node.Position,
-                    Cost = node.Weight + fromNode.Cost,
                     PrewiousNode = fromNode,
                     PathLengthFromStart = fromNode.PathLengthFromStart + 1,
+                    Cost = node.Weight + fromNode.Cost,
                     HeuristicOfChebishevPathLength = GetHeuristicPathLength(node.Position, goal.Position),
                 });
             }

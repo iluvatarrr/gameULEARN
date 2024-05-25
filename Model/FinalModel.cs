@@ -7,7 +7,7 @@ namespace rpgame2.Model
 {
     public class FinalModel
     {
-        public List<BtnController> ButtonsController;
+        public List<BtnController> ButtonsController { get; private set; }
         public Color color { get; private set; }
         public string headerText { get; private set; }
         public Vector2 headertPosition { get; private set; }

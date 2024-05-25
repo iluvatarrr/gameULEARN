@@ -6,8 +6,8 @@ namespace rpgame2.View
 {
     public class AnimationView
     {
-        public Animation Animation { get; set; }
-        public AnimationController AnimationController { get; set; }
+        public Animation Animation { get; private set; }
+        public AnimationController AnimationController { get; private set; }
         public AnimationView(AnimationController animationController)
         {
             AnimationController = animationController;

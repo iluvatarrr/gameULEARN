@@ -8,7 +8,7 @@ namespace rpgame2.Model
 {
     public class RulesModel
     {
-        public List<BtnController> ButtonsController;
+        public List<BtnController> ButtonsController { get; private set; }
         public Color color { get; private set; }
         public string rulesText { get; private set; }
         public string headerText { get; private set; }

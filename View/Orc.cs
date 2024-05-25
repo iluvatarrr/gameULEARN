@@ -5,7 +5,6 @@ namespace rpgame2.View
 {
     public class Orc
     {
-        protected Texture2D texture;
         public OrcController OrcController;
 
         public Orc(OrcController orcController)

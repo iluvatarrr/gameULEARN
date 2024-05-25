@@ -11,10 +11,11 @@ namespace rpgame2.Model
         public readonly SpriteFont Font;
         public static Song CurrentSong;
         public static Song NextSong;
-        public static float Volume = 0.05f;
+        public static float Volume;
         public MusicValue(SpriteFont font, Song song)
         {
             Font = font;
+            Volume = 0.05f;
             CurrentSong = song;
             Position = new Vector2(850, 250);
             MediaPlayer.Play(CurrentSong);

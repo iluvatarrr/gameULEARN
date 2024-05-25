@@ -1,17 +1,14 @@
 ﻿using Microsoft.Xna.Framework;
-using rpgame2.View;
-using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 
 namespace rpgame2.Model
 {
     static class RectangleHelper
     {
-        public readonly static int marginBlockLeftRight = 40;
-        public readonly static int marginPlayerTop = 90;
-        public static int marginFromTop = 3;
+        public static int marginBlockLeftRight { get { return 40; } }
+        public static int marginPlayerTop { get { return 90; } }
+        public static int marginFromTop { get { return 3; } }
 
         public static bool OnPlatform(this Rectangle r1, Rectangle r2)
         {
@@ -25,18 +22,18 @@ namespace rpgame2.Model
     public class LevelModel
     {
         public PlayerModel PlayerModel;
-        private static Vector2 LastTileOfPlayer;
-        public static bool wasOnPlatform;
+        public static Vector2 LastTileOfPlayer  { get; private set; }
+        public static bool wasOnPlatform { get; private set; }
         public OrcModel OrcModel { get; private set; }
 
         public static MapInfo MapInform;
         public List<OrcModel> OrcModelList;
         public static int sizeOfElement { get; private set; }
         public static Vector2 PositionOfPortal { get; private set; }
-        public static int OrcCount;
+        public static int OrcCount { get; private set; }
 
-        public static List<Vector2> PositionOrcList;
-        public bool IsLevelComplete;
+        public static List<Vector2> PositionOrcList { get; private set; }
+        public bool IsLevelComplete { get; private set; }
         public LevelModel()
         {
             MapInform = new MapInfo();

@@ -18,7 +18,7 @@ namespace rpgame2.Model
     public class LevelState
     {
         public static LevelStates PeviousState { get; set; }
-        public static bool IsChange;
+        public static bool IsChange { get; set; }
         public static LevelStates CurrentState { get; set; }
         public static LevelStates NextState { get; set; }
 

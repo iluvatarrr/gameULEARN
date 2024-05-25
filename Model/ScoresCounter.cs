@@ -5,7 +5,7 @@ namespace rpgame2.Model
 {
     public class ScoresCounter
     {
-        public Vector2 Position;
+        public readonly Vector2 Position;
         public readonly SpriteFont Font;
 
         public ScoresCounter(SpriteFont font)

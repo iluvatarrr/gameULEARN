@@ -17,7 +17,7 @@ namespace rpgame2
         public Texture2D ButtonTexture { get; private set; }
 
         public ButtonFunction ButtonController { get; private set; }
-        public MenuModel MenuModel { get; set; }
+        public MenuModel MenuModel { get; private set; }
         public List<Button> Buttons { get; private set; }
 
         public Menu(Texture2D backgroundImage, SpriteFont spriteFont, SpriteFont buttonFont, MenuModel menuModel, Game game)
